@@ -5,12 +5,16 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <meta charset="utf-8">
     <title>Drone Squad</title>
+    <link rel="stylesheet" href="css/styles.css">
     <script src ="angular/angular.js"></script>
     <script src ="angular-route/angular-route.js"></script>
     <script src="/angularroutes/angularroutes.js"></script>
     <script src="/factories/userFactory.js"></script>
     <!-- rename factory and add other controllers-->
     <script src="/controllers/loginregController.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD7_i2zrhNhi9yXhhl3GYSWxe9fTVmuDQ&callback=initMap"
+    async defer></script>
+
 
   </head>
   <body>
@@ -19,3 +23,12 @@
     </div>
   </body>
 </html>
+<script>
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 34.052235, lng: -118.243683},
+    zoom: 12
+  });
+}
+</script>

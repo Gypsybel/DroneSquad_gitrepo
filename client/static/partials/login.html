@@ -1,0 +1,31 @@
+    <div ng-controller='loginregController'>
+      <div class="row">
+        <div class="col s5">
+          <h2>Register</h2>
+          <div ng-repeat="error in errors">
+            <p>
+              {{error}}
+            </p>
+          </div>
+          <form>
+            <label>Name: <input type="text" ng-model="register.name" value=""></label>
+            <label>Email: <input type="email" ng-model="register.email" value=""></label>
+            <label>Password: <input type="password" ng-model="register.password" value=""></label>
+            <label>Confirm Password: <input type="password" ng-model="register.passconf" value=""></label>
+            <button ng-click='registerUser(register)'>Register</button>
+            <p ng-if="register.name.length<2">Name must be at least 2 letters</p>
+            <p ng-if="register.password.length<8">Password must be at least 8 characters long</p>
+            <p ng-if="register.passconf != register.password">Passwords must match</p>
+          </form>
+        </div>
+        <div class="col s5">
+          <h2>Login</h2>
+          {{myLoginError}}
+          <form>
+            <label>Email: <input type="email" ng-model="login.email" value="bark@barkbark.bark"></label>
+            <label>Password: <input type="password" ng-model="login.password" value="bark"></label>
+            <button ng-click='loginUser(login)'>Login</button>
+          </form>
+        </div>
+      </div>
+    </div>

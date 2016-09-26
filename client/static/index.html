@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app = "app">
+  <head>
+    <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <meta charset="utf-8">
+    <title>Exam</title>
+    <script src ="angular/angular.js"></script>
+    <script src ="angular-route/angular-route.js"></script>
+    <script src="/angularroutes/angularroutes.js"></script>
+    <script src="/factories/userFactory.js"></script>
+    <!-- rename factory and add other controllers-->
+    <script src="/controllers/loginregController.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div ng-view=""></div>
+    </div>
+  </body>
+</html>

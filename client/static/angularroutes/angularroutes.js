@@ -19,6 +19,9 @@ app.config(['$httpProvider', '$routeProvider', function($httpProvider, $routePro
         .when('/home', {
             templateUrl:'partials/home.html'
         })
+        .when('/addgroup', {
+            templateUrl:'partials/addgroup.html'
+        })
         .otherwise({
             redirectTo:'/'
         })

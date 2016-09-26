@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, './bower_components')));
 /*routes*/
 require('./server/config/routes.js')(app);
 
-var port = 9001;
+var port = 8000;
 app.listen(port, function(){
 	console.log(port);
 })

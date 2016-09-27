@@ -25,3 +25,11 @@ width: 85%
 thead{
   color: #ff5800;
 }
+
+.btn{
+  background-color: #FA6C23;
+};
+
+.btn :hover{
+  background-color: #FA6C23;
+};

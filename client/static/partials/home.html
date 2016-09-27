@@ -1,65 +1,36 @@
-
-<div ng-controller='homeController'>
-  <div id="main">
-    <div class="main">
-      <div class="row">
-        <div id="sidebar" class="col s12 m4 l3">
-          <!-- dynamically pull in club photo url here  -->
-          <img src="../images/club_media/lafpv_logo.jpg" class="responsive-img" alt="club logo" />
-
-          <!-- dynamically render club name here -->
-          <h2>LAFPV</h2>
-
-          <!-- pull in city name here -->
-          <p>Los Angeles, CA</p>
-
-          <!-- pull in join date here -->
-          <p>On Drone Squad Since July 2015</p>
-
-          <!-- pull in members count here -->
-          <p>Members: 412</p>
-
-          <!-- pull in Upcoming Meetups count here -->
-          <p>Upcoming Meetups: 2</p>
-
-          <!-- pull in past meetups count here -->
-          <p>Past Meetups: 6</p>
-
-          <!-- pull in organizers here -->
-          <p>Organizers:</p>
-          <p>Ethan and Sean</p>
-
+<div><!-- ng-controller='maingroupController' -->
+  <div class="main">
+    <div class="row">
+        <div id="map" class="col s10 center-align"></div>
+        <div class="col s10 center-align">
+          <h1>Choose Your Group</h1>
         </div>
-        <div id="content" class="col s12 m4 l6">
-          <h2>About Us</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <button>Upcoming</button>
-            <button>Post</button>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <button>Post</button>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <button>Post</button>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <button>Post</button>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <button>Post</button>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <button>Post</button>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-        </div>
-          <div class="center-align" id="instagram" class="col s12 m4 l3">
-            <h3>Instagram!</h3>
-            <div ng-repeat="image in insta" class="col s2">
-              <img src="{{image}}" alt="" style="width: 100%"/>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-            <div id="map" class="col s10 center-align"></div>
-
-        </div>
-      </div>
+        <table id="grouptable" class="highlight col s10 center-align">
+          <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">City</th>
+                <th data-field="price">Members</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr>
+            <td>Group Ethan</td>
+            <td>Pasadena</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>Group Jake</td>
+            <td>Los Feliz</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <td>Group Crystabel</td>
+            <td>Hollywood</td>
+            <td>16</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

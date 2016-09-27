@@ -1,5 +1,5 @@
 
-<div> <!-- ng-controller='homeController' -->
+<div ng-controller='homeController'>
   <div id="main">
     <div class="main">
       <div class="row">
@@ -51,7 +51,9 @@
         </div>
           <div class="center-align" id="instagram" class="col s12 m4 l3">
             <h3>Instagram!</h3>
-            <iframe   src="//users.instush.com/side-bar/?rows=3&round=true&circle=false&pin=true&user_id=2227039481&username=lafpv&sid=-1&susername=-1&tag=-1&stype=mine&t=999999pcptgs4JAMK3dgijxbPs4H_uCJhAPBlLxEAPlwnQx6suYlydrwDdb7ar2YvZmq7gX9H38cjLGZY" allowtransparency="true" frameborder="0" scrolling="no"  style="display:block;padding-left:100px;width:300px;height:510px;border:none;overflow:visible;" ></iframe>
+            <div ng-repeat="image in insta" class="col s2">
+              <img src="{{image}}" alt="" style="width: 100%"/>
+            </div>
           </div>
         </div>
         <div class="row">

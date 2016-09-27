@@ -21,3 +21,7 @@ width: 85%
 #map  {
   height: 500px;
 }
+
+thead{
+  color: #ff5800;
+}

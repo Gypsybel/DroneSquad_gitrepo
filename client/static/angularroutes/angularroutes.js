@@ -22,6 +22,9 @@ app.config(['$httpProvider', '$routeProvider', function($httpProvider, $routePro
         .when('/addgroup', {
             templateUrl:'partials/addgroup.html'
         })
+        .when('/maingroup', {
+            templateUrl:'partials/maingroup.html'
+        })
         .otherwise({
             redirectTo:'/'
         })

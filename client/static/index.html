@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html ng-app = "app">
   <head>
+    <script src="jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD7_i2zrhNhi9yXhhl3GYSWxe9fTVmuDQ&callback=initMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD7_i2zrhNhi9yXhhl3GYSWxe9fTVmuDQ"></script>
+    <script src ="angular/angular.js"></script>
+    <script src ="/ngmap/build/scripts/ng-map.min.js"></script>
     <meta charset="utf-8">
     <title>Drone Squad</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src ="angular/angular.js"></script>
     <script src ="angular-route/angular-route.js"></script>
     <script src="/angularroutes/angularroutes.js"></script>
     <script src="/factories/userFactory.js"></script>
@@ -24,7 +25,7 @@
       <div class="row">
         <div id="header" class="col s12">
           <img src="../images/header.png" class="responsive-img" alt="Header image" />
-          <div class=" col s3 offset-s1">
+          <div class="col s3 offset-s1">
           </div>
         </div>
       </div>
@@ -32,4 +33,29 @@
     </div>
   </body>
 
+
+  <!-- <script type="text/javascript">
+  console.log("trying to load the map..")
+  var map;
+  function initMap() {
+    var myLatLong = {lat: 34.052235, lng: -118.243683};
+    var coordinate_y = 34.052235;
+    var coordinate_x = -118.25;
+    var secondMarker = { lat: coordinate_y, lng: coordinate_x};
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLong,
+      zoom: 12
+    });
+    var marker = new google.maps.Marker({
+      position: myLatLong,
+      map: map,
+      title: 'Hello Jake'
+    });
+    var marker2 = new google.maps.Marker({
+      position: secondMarker,
+      map: map,
+      title: 'Hello Crystabel'
+    });
+  };
+  </script> -->
 </html>

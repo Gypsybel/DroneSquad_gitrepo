@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute', 'ngMap']);
 
 app.config(['$httpProvider', '$routeProvider', function($httpProvider, $routeProvider){
   $httpProvider.interceptors.push(

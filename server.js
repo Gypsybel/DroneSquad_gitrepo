@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 // public static
 app.use(express.static(path.join(__dirname,"client", "static")))
-app.use(express.static(path.join(__dirname, './bower_components')));
+app.use(express.static(path.join(__dirname, 'bower_components')));
 /*routes*/
 require('./server/config/routes.js')(app);
 

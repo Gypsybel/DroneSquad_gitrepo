@@ -1,7 +1,11 @@
 <div ng-controller='homeController'>
   <div class="main">
     <div class="row">
-        <div id="map" class="col s10 center-align"></div>
+        <div id="mappp" class="col s10 center-align">
+          <ng-map center="35, -118" zoom="4">
+            <marker ng-repeat="location in locations" position="{{location.coordinate_x}}, {{location.coordinate_y}}"></marker>
+          </ng-map>
+        </div>
         <div class="col s10 center-align">
           <h1>Choose Your Group</h1>
         </div>
@@ -23,27 +27,4 @@
       </table>
     </div>
   </div>
-  <script type="text/javascript">
-    var map;
-    function initMap() {
-      var myLatLong = {lat: 34.052235, lng: -118.243683};
-      var coordinate_y = 34.052235;
-      var coordinate_x = -118.25;
-      var secondMarker = { lat: coordinate_y, lng: coordinate_x};
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: myLatLong,
-        zoom: 12
-      });
-      var marker = new google.maps.Marker({
-        position: myLatLong,
-        map: map,
-        title: 'Hello Jake'
-      });
-      var marker2 = new google.maps.Marker({
-        position: secondMarker,
-        map: map,
-        title: 'Hello Crystabel'
-      });
-    };
-  </script>
 </div>

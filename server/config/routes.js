@@ -7,6 +7,7 @@ module.exports = function(app){
 
   // app.delete('/product/:id', userRoutes.deleteProduct);
   app.get('/logout', userRoutes.logout);
+  app.post('/addgroup', userRoutes.createGroup);
 }
 function userAuth(req,res,next){
   if (req.session.user){

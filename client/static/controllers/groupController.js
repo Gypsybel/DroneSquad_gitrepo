@@ -1,4 +1,4 @@
-app.controller('homeController',[ '$scope', '$http','userFactory','$location', function($scope, $http, userFactory, $location){
+app.controller('groupController',[ '$scope', '$http','userFactory','$location', function($scope, $http, userFactory, $location){
   function test(data){
     $scope.insta = data;
     console.log(data);

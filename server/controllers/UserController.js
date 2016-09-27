@@ -47,6 +47,17 @@ module.exports = {
     })
   },
 
+  getGroups: function(req, res){
+    Group.find({}).exec(function(err, groups){
+      if(err){
+        res.status(500).send('There was a problem retrieving all groups.')
+      }
+      else{
+        res.json(groups);
+      }
+    })
+  },
+
   createGroup: function (req, res) {
     var group = new Group(req.body);
     group.save(function(err){

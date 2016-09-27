@@ -9,25 +9,15 @@
           <thead>
             <tr>
                 <th data-field="id">Name</th>
-                <th data-field="name">City</th>
+                <th data-field="name">Location</th>
                 <th data-field="price">Members</th>
             </tr>
           </thead>
         <tbody>
-          <tr>
-            <td>Group Ethan</td>
-            <td>Pasadena</td>
+          <tr ng-repeat= "group in groups">
+            <td>{{group.name}}</td>
+            <td>{{group.city}}, {{group.state}}</td>
             <td>20</td>
-          </tr>
-          <tr>
-            <td>Group Jake</td>
-            <td>Los Feliz</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <td>Group Crystabel</td>
-            <td>Hollywood</td>
-            <td>16</td>
           </tr>
         </tbody>
       </table>

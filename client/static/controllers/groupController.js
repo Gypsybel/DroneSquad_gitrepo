@@ -1,4 +1,3 @@
-
 app.controller('groupController',[ '$scope', '$http','userFactory','$location', function($scope, $http, userFactory, $location){
   function test(data){
     $scope.insta = data;

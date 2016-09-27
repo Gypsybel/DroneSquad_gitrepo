@@ -28,5 +28,16 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
     };
     // end admin user functions
 
+    factory.createGroup = function (group) {
+      $http({
+        url: '/addgroup',
+        method: 'POST',
+        data: group
+      }).then(function(res){
+
+        $location.url('/home')
+      })
+    };
+
     return factory;
 }])

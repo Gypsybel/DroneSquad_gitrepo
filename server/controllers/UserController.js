@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
+var Group = mongoose.model('Group');
 
 module.exports = {
 
@@ -44,6 +45,19 @@ module.exports = {
         res.json(users);
       }
     })
+  },
+
+  createGroup: function (req, res) {
+    var group = new Group(req.body);
+    group.save(function(err){
+      if (err){
+        res.status(500).send("Group did not save");
+      }
+      else{
+        console.log(group);
+        res.sendStatus(200);
+      }
+    });
   },
 
 }

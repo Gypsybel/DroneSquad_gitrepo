@@ -14,16 +14,16 @@ app.config(['$httpProvider', '$routeProvider', function($httpProvider, $routePro
     });
     $routeProvider
         .when('/', {
-            templateUrl:'partials/login.html'
-        })
-        .when('/home', {
             templateUrl:'partials/home.html'
+        })
+        .when('/group', {
+            templateUrl:'partials/group.html'
         })
         .when('/addgroup', {
             templateUrl:'partials/addgroup.html'
         })
-        .when('/maingroup', {
-            templateUrl:'partials/maingroup.html'
+        .when('/login', {
+            templateUrl:'partials/login.html'
         })
         .otherwise({
             redirectTo:'/'

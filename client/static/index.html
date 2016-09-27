@@ -34,9 +34,23 @@
 <script>
 var map;
 function initMap() {
+  var myLatLong = {lat: 34.052235, lng: -118.243683};
+  var coordinate_y = 34.052235;
+  var coordinate_x = -118.25;
+  var secondMarker = { lat: coordinate_y, lng: coordinate_x};
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 34.052235, lng: -118.243683},
+    center: myLatLong,
     zoom: 12
+  });
+  var marker = new google.maps.Marker({
+    position: myLatLong,
+    map: map,
+    title: 'Hello Jake'
+  });
+  var marker2 = new google.maps.Marker({
+    position: secondMarker,
+    map: map,
+    title: 'Hello Crystabel'
   });
 }
 </script>

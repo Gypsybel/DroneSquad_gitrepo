@@ -39,5 +39,14 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
       })
     };
 
+    factory.getGroups = function (callback) {
+      $http({
+        url: '/groups',
+        method: 'GET'
+      }).then(function(res){
+        callback(res.data)
+      })
+    };
+
     return factory;
 }])

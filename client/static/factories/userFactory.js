@@ -63,6 +63,14 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
         $location.url('/group/'+id);
       })
     };
+    factory.getLoggedUser = function(callback) {
+      $http({
+        url: '/getloggeduser',
+        method: 'GET',
+      }).then(function(res){
+        callback(res.data);
+      })
+    };
 
     factory.getMeetups = function(id, callback) {
       $http({

@@ -29,9 +29,11 @@ module.exports = {
     console.log(req.body);
 		User.findOne({email: req.body.email}).exec(function (err, user) {
       if(user == null){
+        console.log("login failed");
         res.status(400).send("Login Failed")
       }
 			else if(req.body.password == user.password){
+        console.log("login successful");
 				req.session.user = user;
 				res.sendStatus(200);
 			}

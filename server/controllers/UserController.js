@@ -14,9 +14,11 @@ module.exports = {
 		var user = new User(req.body);
 		user.save(function(err){
 			if (err){
+        console.log(err);
 				res.status(500).send("Users did not save");
 			}
       else{
+        console.log(user);
   			req.session.user = req.body;
         res.sendStatus(200);
 			}
@@ -27,9 +29,11 @@ module.exports = {
     console.log(req.body);
 		User.findOne({email: req.body.email}).exec(function (err, user) {
       if(user == null){
+        console.log("login failed");
         res.status(400).send("Login Failed")
       }
 			else if(req.body.password == user.password){
+        console.log("login successful");
 				req.session.user = user;
 				res.sendStatus(200);
 			}
@@ -37,6 +41,7 @@ module.exports = {
 	},
 
   logout: function (req, res) {
+    console.log("Logged out the user");
     req.session.destroy();
     res.redirect('/');
   },

@@ -1,7 +1,8 @@
-app.controller('loginregController',[ '$scope', '$http','userFactory','$location', function($scope, $http, userFactory, $location){
+app.controller('registerController',[ '$scope', '$http','userFactory','$location', function($scope, $http, userFactory, $location){
   $scope.errors = [];
-  $scope.registerUser = function(user){
 
+  $scope.registerUser = function(user){
+    console.log(user);
     count = 0;
     // Registration Validations go here
     if(user.name.length < 2){
@@ -20,14 +21,9 @@ app.controller('loginregController',[ '$scope', '$http','userFactory','$location
       $location.url('/')
     }
     else{
+      console.log(user);
       userFactory.registerUser(user)
     }
   };
-  function loginError(data){
-    $scope.myLoginError = data.data;
-    console.log($scope.myLoginError);
-  }
-  $scope.loginUser = function(user){
-      userFactory.loginUser(user, loginError);
-  };
+
 }])

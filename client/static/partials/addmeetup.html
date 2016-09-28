@@ -9,7 +9,8 @@
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">today</i>
-          <input id="icon_prefix" type="date" class="validate" ng-model="meetup.date">
+          <input id="icon_prefix" type="date" class="validate" ng-model="meetup.date" min = "{{today | date:'yyyy-MM-dd'}}">
+          
           <label class="active" for="icon_prefix">Event Date</label>
         </div>
       <div class="row">

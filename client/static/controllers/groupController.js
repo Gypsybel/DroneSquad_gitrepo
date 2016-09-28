@@ -7,12 +7,16 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
 
   // $scope.group = {};
 
-  function getGroup(id){
+  function getGroup(id, callback){
     userFactory.getGroup(id, insta, function(group){
       $scope.group=group;
+      callback();
     });
   };
-  getGroup($routeParams.id);
+  getGroup($routeParams.id, function(){
+    console.log("in callback",$scope.group);
+  });
+
 
   function getMeetups(id) {
     userFactory.getMeetups(id, function(meetups) {

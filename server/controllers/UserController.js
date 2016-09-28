@@ -109,7 +109,7 @@ module.exports = {
   },
 
   getAllMeetups: function(req, res){
-    Meetup.find({}).exec(function(err, meetups){
+    Meetup.find({}).populate("_group").exec(function(err, meetups){
       if(err){
         res.status(500).send('There was a problem retrieving all meetups.')
       }

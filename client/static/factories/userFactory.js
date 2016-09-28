@@ -53,6 +53,16 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
         callback(group.data);
       })
     };
+    factory.addMeetup = function (id, meetup) {
+      console.log(id,meetup);
+      $http({
+        url: '/addmeetup/'+id,
+        method: 'POST',
+        data: meetup
+      }).then(function(res){
+        $location.url('/group/'+id);
+      })
+    };
 
     return factory;
 }])

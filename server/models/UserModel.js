@@ -24,7 +24,7 @@ var GroupSchema = new Schema({
   image_url: {type: String, default: "https://d30y9cdsu7xlg0.cloudfront.net/png/103844-200.png"},
   _users: [{type: Schema.Types.ObjectId, ref: 'User'}],
   _flying_location: {type: Schema.Types.ObjectId, ref: 'Location'},
-  _events: [{type: Schema.Types.ObjectId, ref: 'Event'}],
+  _meetups: [{type: Schema.Types.ObjectId, ref: 'Event'}],
   _organizers: [{type: Schema.Types.ObjectId, ref: 'User'}],
 })
 mongoose.model('Group', GroupSchema);
@@ -37,12 +37,14 @@ var LocationSchema = new Schema({
 })
 mongoose.model('Location', LocationSchema);
 
-var EventSchema = new Schema({
+var MeetupSchema = new Schema({
+  name: String,
   created_at: Date,
-  event_date: Date,
+  date: Date,
   _organizers: [{type: Schema.Types.ObjectId, ref: 'User'}],
   _attendees: [{type: Schema.Types.ObjectId, ref: 'User'}],
   _location: {type: Schema.Types.ObjectId, ref: 'Location'},
+  location: String,
   description: String
-})
-mongoose.model('Event', EventSchema)
+});
+mongoose.model('Meetup', MeetupSchema)

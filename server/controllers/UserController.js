@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
 var Group = mongoose.model('Group');
+var Meetup = mongoose.model('Meetup');
 
 module.exports = {
 
@@ -77,6 +78,20 @@ module.exports = {
       }
       else{
         res.json(group);
+      }
+    });
+  },
+
+  addMeetup: function (req, res) {
+    var meetup = new Meetup(req.body);
+    meetup.save(function(err){
+      if (err){
+        console.log(err);
+        res.status(500).send("New Meetup did not save"+err);
+      }
+      else{
+        console.log(meetup);
+        res.sendStatus(200);
       }
     });
   },

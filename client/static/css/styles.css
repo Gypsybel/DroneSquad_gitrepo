@@ -2,13 +2,21 @@
 width: 80%
 }
 
+.login{
+  background-color: rgb(22,53,64);
+}
 
 #sidebar{
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   height: 700px;
 }
 
-
+.bgorange{
+  background-color: #fa6c23;
+}
+.bgorange:hover{
+  background-color: #f5925f;
+}
 #content {
   height: 700px;
   overflow: scroll;

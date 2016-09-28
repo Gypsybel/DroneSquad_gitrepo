@@ -1,36 +1,45 @@
 <div ng-controller='homeController'>
   <div class="main">
     <div class="row">
-        <div class="col s10 center-align">
-          <ng-map center="35, -118" zoom="4">
-            <marker ng-repeat="location in locations" position="{{location.coordinate_x}}, {{location.coordinate_y}}",
-            title="{{group.name}}",
-            icon="../images/mapicon.png",
-            scale: 2.,
-            dragglele="true"> </marker></marker>
-          </ng-map>
-        </div>
-        <div class="col s10 center-align">
-          <h1>Choose Your Group</h1>
-        </div>
-        <table id="grouptable" class="highlight col s10 center-align">
-          <thead>
-            <tr>
+      <div class="col s12">
+        <ng-map zoom-to-include-markers="true">
+          <marker ng-repeat="location in locations" position="{{location.coordinate_x}}, {{location.coordinate_y}}",
+          title="{{group.name}}",
+          icon="../images/mapicon.png",
+          scale: 1.,
+          dragglele="true"> </marker></marker>
+        </ng-map>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s8 center-align">
+        <h2>Choose Your Group</h2>
+      </div>
+        <div>
+          <table id="grouptable" class="highlight col s8  z-depth-1 center-align">
+            <thead>
+              <tr>
                 <th data-field="id">Name</th>
                 <th data-field="name">Location</th>
                 <th data-field="price">Members</th>
                 <th>Show</th>
+              </tr>
+            </thead>
+          <tbody>
+            <tr ng-repeat= "group in groups">
+              <td>{{group.name}}</td>
+              <td>{{group.city}}, {{group.state}}</td>
+              <td>20</td>
+              <td><a href="#/group/{{group._id}}">Visit {{group.name}} Page</a></td>
             </tr>
-          </thead>
-        <tbody>
-          <tr ng-repeat= "group in groups">
-            <td>{{group.name}}</td>
-            <td>{{group.city}}, {{group.state}}</td>
-            <td>20</td>
-            <td><a href="#/group/{{group._id}}">Visit {{group.name}} Page</a></td>
-          </tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+        </div>
+        <!-- start event ticker here -->
+        <div class="">
+          <h3>Upcoming Events</h3>
+        </div>
+      </div>
     </div>
   </div>
 </div>

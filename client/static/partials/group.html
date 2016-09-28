@@ -64,7 +64,8 @@
               <ng-map center="{{group.city}}, {{group.state}}" zoom="13">
                 <marker position="{{group.city}}, {{group.state}}" title="{{group.name}}"
                 icon="../images/mapicon.png",
-                scale: 2.,
+                scale: 1.,
+                center="[{{group.city}}, {{group.state}}]"
                 dragglele="true"> </marker>
               </ng-map>
             </div>

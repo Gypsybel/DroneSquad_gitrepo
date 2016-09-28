@@ -5,8 +5,6 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
   $scope.locations = [{coordinate_x: "35.3", coordinate_y:"140.2"},
   {coordinate_x: "35.5", coordinate_y:"140.4"},{coordinate_x: "35.7", coordinate_y:"140.7"}]
 
-
-
   $scope.group = {};
   function getGroup(id){
     userFactory.getGroup(id, function(group){

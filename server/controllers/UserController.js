@@ -6,6 +6,10 @@ var Meetup = mongoose.model('Meetup');
 
 module.exports = {
 
+  getLoggedUser: function(req, res){
+    res.json(req.session.user);
+  },
+
   register: function(req,res){
 		var user = new User(req.body);
 		user.save(function(err){
@@ -61,6 +65,7 @@ module.exports = {
 
   createGroup: function (req, res) {
     var group = new Group(req.body);
+    group._organizers.push(req.session.user._id);
     group.save(function(err){
       if (err){
         res.status(500).send("Group did not save");

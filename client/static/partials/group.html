@@ -10,16 +10,16 @@
           <h2>{{group.name}}</h2>
 
           <!-- pull in city name here -->
-          <p>{{group.city}}, {{group.state}}</p>
+          <p>Location: {{group.city}}, {{group.state}}</p>
 
           <!-- pull in join date here -->
-          <p>On Drone Squad Since {{group.created_at}}</p>
+          <p>On Drone Squad Since {{group.createdAt}}</p>
 
           <!-- pull in members count here -->
           <p>Members: 412</p>
 
           <!-- pull in Upcoming Meetups count here -->
-          <p>Upcoming Meetups: 2</p>
+          <p>Upcoming Meetups: {{meetupcount}}</p>
 
           <!-- pull in past meetups count here -->
           <p>Past Meetups: 6</p>
@@ -32,11 +32,15 @@
         <div id="content" class="col s12 m4 l6">
           <h2>About Us</h2>
           <p>{{group.description}}</p>
-
-            <button>Upcoming</button>
-            <a href="#/addmeetup/{{group._id}}"><button>Add New Event</button></a>
-            <p>{{meetup.description}}</p>
-
+          <hr>
+          <button>Upcoming</button>
+          <div ng-repeat="meetup in meetups">
+            <h5>{{meetup.name}}</h5>
+            <p>Date: {{meetup.date | date: MM/dd/yyy}}</p>
+            <p>Description: {{meetup.description}}</p>
+            <p>Where: {{meetup.location}}</p>
+          </div>
+          <a href="#/addmeetup/{{group._id}}"><button>Add New Event</button></a>
         </div>
           <div class="center-align" id="instagram" class="col s12 m4 l3">
             <h3>Instagram!</h3>

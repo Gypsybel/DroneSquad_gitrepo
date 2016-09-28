@@ -6,6 +6,10 @@ var Meetup = mongoose.model('Meetup');
 
 module.exports = {
 
+  getLoggedUser: function(req, res){
+    res.json(req.session.user);
+  },
+
   register: function(req,res){
 		var user = new User(req.body);
 		user.save(function(err){
@@ -61,6 +65,7 @@ module.exports = {
 
   createGroup: function (req, res) {
     var group = new Group(req.body);
+    group._organizers.push(req.session.user._id);
     group.save(function(err){
       if (err){
         res.status(500).send("Group did not save");
@@ -84,6 +89,7 @@ module.exports = {
 
   addMeetup: function (req, res) {
     var meetup = new Meetup(req.body);
+    meetup._group = req.params.id;
     meetup.save(function(err){
       if (err){
         console.log(err);
@@ -96,4 +102,25 @@ module.exports = {
     });
   },
 
+  getMeetups: function (req, res) {
+    Meetup.find({_group: req.params.id}, function(err, meetups){
+      if (err){
+        res.status(500).send("Had trouble finding meetups");
+      }
+      else{
+        res.json(meetups);
+      }
+    });
+  },
+
+  getAllMeetups: function(req, res){
+    Meetup.find({}).populate("_group").exec(function(err, meetups){
+      if(err){
+        res.status(500).send('There was a problem retrieving all meetups.')
+      }
+      else{
+        res.json(meetups);
+      }
+    })
+  },
 }

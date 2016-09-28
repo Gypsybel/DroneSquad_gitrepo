@@ -16,4 +16,11 @@ app.controller('homeController',[ '$scope', '$http','userFactory','$location', '
 
 	getGroups();
 
+	function getAllMeetups() {
+    userFactory.getAllMeetups(function(meetups) {
+      $scope.meetups=meetups;
+      })
+  };
+	getAllMeetups();
+
 }]);

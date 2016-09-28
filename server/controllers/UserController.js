@@ -89,6 +89,7 @@ module.exports = {
 
   addMeetup: function (req, res) {
     var meetup = new Meetup(req.body);
+    meetup._group = req.params.id;
     meetup.save(function(err){
       if (err){
         console.log(err);
@@ -101,4 +102,25 @@ module.exports = {
     });
   },
 
+  getMeetups: function (req, res) {
+    Meetup.find({_group: req.params.id}, function(err, meetups){
+      if (err){
+        res.status(500).send("Had trouble finding meetups");
+      }
+      else{
+        res.json(meetups);
+      }
+    });
+  },
+
+  getAllMeetups: function(req, res){
+    Meetup.find({}).populate("_group").exec(function(err, meetups){
+      if(err){
+        res.status(500).send('There was a problem retrieving all meetups.')
+      }
+      else{
+        res.json(meetups);
+      }
+    })
+  },
 }

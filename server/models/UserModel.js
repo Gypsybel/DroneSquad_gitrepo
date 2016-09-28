@@ -8,10 +8,8 @@ var UserSchema = new Schema({
   email: String,
   password: String,
   image_url: String,
-  bio: String,
-  created_at: Date
-
-});
+  bio: String
+},{timestamps:true});
 mongoose.model('User', UserSchema);
 
 var GroupSchema = new Schema({
@@ -26,25 +24,24 @@ var GroupSchema = new Schema({
   _flying_location: {type: Schema.Types.ObjectId, ref: 'Location'},
   _meetups: [{type: Schema.Types.ObjectId, ref: 'Event'}],
   _organizers: [{type: Schema.Types.ObjectId, ref: 'User'}],
-})
+},{timestamps:true})
 mongoose.model('Group', GroupSchema);
 
 var LocationSchema = new Schema({
   label: String,
   coordinate_x: Number,
-  coordinate_y: Number,
-  created_at: Date
-})
+  coordinate_y: Number
+},{timestamps:true})
 mongoose.model('Location', LocationSchema);
 
 var MeetupSchema = new Schema({
   name: String,
-  created_at: Date,
   date: Date,
+  _group: {type: Schema.Types.ObjectId, ref: 'Group'},
   _organizers: [{type: Schema.Types.ObjectId, ref: 'User'}],
   _attendees: [{type: Schema.Types.ObjectId, ref: 'User'}],
   _location: {type: Schema.Types.ObjectId, ref: 'Location'},
   location: String,
   description: String
-});
+},{timestamps:true});
 mongoose.model('Meetup', MeetupSchema)

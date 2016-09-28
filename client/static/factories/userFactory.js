@@ -64,9 +64,9 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
         $location.url('/group/'+id);
       })
     };
-    factory.getLoggedUser = function(callback) {
+    factory.validateLoggedIn = function(callback) {
       $http({
-        url: '/getloggeduser',
+        url: '/validateLoggedIn',
         method: 'GET',
       }).then(function(res){
         callback(res.data);
@@ -85,6 +85,15 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
     factory.getAllMeetups = function(callback) {
       $http({
         url:'/meetups',
+        method: 'GET',
+      }).then(function(res){
+        callback(res.data);
+      })
+    };
+
+    factory.getLoggedUser = function(callback) {
+      $http({
+        url:'/getLoggedUser',
         method: 'GET',
       }).then(function(res){
         callback(res.data);

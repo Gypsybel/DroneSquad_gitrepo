@@ -6,4 +6,10 @@ app.controller('addMeetupController',[ '$scope', '$http','userFactory','$locatio
     console.log(meetup);
 		userFactory.addMeetup ($routeParams.id, meetup)
 	};
+
+	function validateLoggedIn() {
+		userFactory.validateLoggedIn();
+	}
+	validateLoggedIn();
+	
 }])

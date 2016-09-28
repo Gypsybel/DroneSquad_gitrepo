@@ -23,4 +23,11 @@ app.controller('homeController',[ '$scope', '$http','userFactory','$location', '
   };
 	getAllMeetups();
 
+	function getLoggedUser() {
+		userFactory.getLoggedUser(function(user){
+			$scope.user = user;
+		})
+	};
+	getLoggedUser();
+
 }]);

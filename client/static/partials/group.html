@@ -36,7 +36,7 @@
           <button>Upcoming</button>
           <div ng-repeat="meetup in meetups">
             <h5>{{meetup.name}}</h5>
-            <p>Date: {{meetup.date}}</p>
+            <p>Date: {{meetup.date | date: MM/dd/yyy}}</p>
             <p>Description: {{meetup.description}}</p>
             <p>Where: {{meetup.location}}</p>
           </div>

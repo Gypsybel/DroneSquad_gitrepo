@@ -36,8 +36,9 @@
         </table>
         </div>
         <!-- start event ticker here -->
-        <div class="">
-          <h3>Upcoming Events</h3>
+        <h3>Upcoming Events</h3>
+        <div ng-repeat="meetup in meetups">
+          <p>{{meetup.name}}</p>
         </div>
       </div>
     </div>

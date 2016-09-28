@@ -45,11 +45,12 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
         callback(res.data)
       })
     };
-    factory.getGroup = function (id, callback) {
+    factory.getGroup = function (id, instaCall, callback) {
       $http({
         url: '/group/'+id,
         method: 'GET'
       }).then(function(group){
+        instaCall(group.data.instagram_token);
         callback(group.data);
       })
     };

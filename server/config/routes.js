@@ -3,6 +3,7 @@ module.exports = function(app){
   app.get('/groups', userRoutes.getGroups);
   app.post('/register', userRoutes.register);
   app.post('/login', userRoutes.login);
+  app.get('/group/:id', userRoutes.getGroup);
   // app.use(userAuth);
 
   app.get('/logout', userRoutes.logout);

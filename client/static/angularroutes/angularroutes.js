@@ -25,6 +25,9 @@ app.config(['$httpProvider', '$routeProvider', function($httpProvider, $routePro
         .when('/login', {
             templateUrl:'partials/login.html'
         })
+        .when('/group/:id', {
+            templateUrl:'partials/group.html'
+        })
         .otherwise({
             redirectTo:'/'
         })

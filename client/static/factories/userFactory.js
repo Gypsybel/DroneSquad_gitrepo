@@ -1,5 +1,3 @@
-
-
 app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $location){
     var users = {data:[]};
     var factory = {};
@@ -45,6 +43,14 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
         method: 'GET'
       }).then(function(res){
         callback(res.data)
+      })
+    };
+    factory.getGroup = function (id, callback) {
+      $http({
+        url: '/group/'+id,
+        method: 'GET'
+      }).then(function(group){
+        callback(group.data);
       })
     };
 

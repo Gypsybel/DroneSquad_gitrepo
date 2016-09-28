@@ -70,5 +70,15 @@ module.exports = {
       }
     });
   },
+  getGroup: function (req, res) {
+    Group.findOne({_id:req.params.id}, function(err, group){
+      if (err){
+        res.status(500).send("Had trouble finding group");
+      }
+      else{
+        res.json(group);
+      }
+    });
+  },
 
 }

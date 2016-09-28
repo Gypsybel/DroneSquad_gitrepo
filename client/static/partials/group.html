@@ -1,20 +1,19 @@
-
 <div ng-controller='groupController'>
   <div id="main">
     <div class="main">
       <div class="row">
         <div id="sidebar" class="col s12 m4 l3">
           <!-- dynamically pull in club photo url here  -->
-          <img src="../images/club_media/lafpv_logo.jpg" class="responsive-img" alt="club logo" />
+          <img src="{{group.image_url}}" class="responsive-img" alt="club logo" />
 
           <!-- dynamically render club name here -->
-          <h2>LAFPV</h2>
+          <h2>{{group.name}}</h2>
 
           <!-- pull in city name here -->
-          <p>Los Angeles, CA</p>
+          <p>{{group.city}}, {{group.state}}</p>
 
           <!-- pull in join date here -->
-          <p>On Drone Squad Since July 2015</p>
+          <p>On Drone Squad Since {{group.created_at}}</p>
 
           <!-- pull in members count here -->
           <p>Members: 412</p>
@@ -32,7 +31,7 @@
         </div>
         <div id="content" class="col s12 m4 l6">
           <h2>About Us</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>{{group.description}}</p>
 
             <button>Upcoming</button>
             <button>Post</button>
@@ -53,13 +52,20 @@
             <h3>Instagram!</h3>
             <a href="https://api.instagram.com/oauth/authorize/?client_id=eec5c8b62a1949619253a61daee56576&redirect_uri=REDIRECT-URI&response_type=token
 ">link your instagram here</a>
-            <div ng-repeat="image in insta" class="col s2">
-              <img src="{{image}}" alt="" style="width: 100%"/>
+            <div ng-repeat="image in insta.data | limitTo: 3" class="col s2">
+              <a href="{{image.link}}"><img class="insta_pic" src="{{image.images.standard_resolution.url}}" alt="" style="width: 100%"/></a>
+
             </div>
           </div>
         </div>
         <div class="row">
-            <div id="map" class="col s10 center-align"></div>
+            <div id="map" class="col s10 center-align">
+              <div id="mappp" class="col s10 center-align">
+              <ng-map center="{{group.city}}, {{group.state}}" zoom="13">
+                <marker position="{{group.city}}, {{group.state}}" title="{{group.name}}"></marker>
+              </ng-map>
+            </div>
+          </div>
 
         </div>
       </div>

@@ -1,7 +1,7 @@
 <div ng-controller='homeController'>
   <div class="main">
     <div class="row">
-        <div id="mappp" class="col s10 center-align">
+        <div class="col s10 center-align">
           <ng-map center="35, -118" zoom="4">
             <marker ng-repeat="location in locations" position="{{location.coordinate_x}}, {{location.coordinate_y}}"></marker>
           </ng-map>
@@ -15,6 +15,7 @@
                 <th data-field="id">Name</th>
                 <th data-field="name">Location</th>
                 <th data-field="price">Members</th>
+                <th>Show</th>
             </tr>
           </thead>
         <tbody>
@@ -22,6 +23,7 @@
             <td>{{group.name}}</td>
             <td>{{group.city}}, {{group.state}}</td>
             <td>20</td>
+            <td><a href="#/group/{{group._id}}">Visit {{group.name}} Page</a></td>
           </tr>
         </tbody>
       </table>

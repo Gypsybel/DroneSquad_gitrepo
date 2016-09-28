@@ -14,6 +14,12 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
 
   getGroup($routeParams.id);
 
+  // function getEvents() {
+  //   userFactory.getEvents(function(events) {
+  //
+  //   })
+  // }
+
   function insta(token){
     $http.jsonp('https://api.instagram.com/v1/users/self/media/recent/?access_token='+token+"&callback=JSON_CALLBACK")
     .success(function(data){
@@ -23,4 +29,6 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
 
 
   insta("2227039481.eec5c8b.bcc5f8c4c8ff4e3894df7cf3bce973c7");
+
+
 }])

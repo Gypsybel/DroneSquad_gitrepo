@@ -4,6 +4,7 @@ module.exports = function(app){
   app.post('/register', userRoutes.register);
   app.post('/login', userRoutes.login);
   app.get('/group/:id', userRoutes.getGroup);
+  app.post('/addmeetup/:id', userRoutes.addMeetup);
   // app.use(userAuth);
 
   app.get('/logout', userRoutes.logout);

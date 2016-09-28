@@ -1,10 +1,10 @@
 app.controller('addgroupController',[ '$scope', '$http','userFactory','$location', function($scope, $http, userFactory, $location){
-	function getLoggedUser() {
-		userFactory.getLoggedUser(function(user){
+	function validateLoggedIn() {
+		userFactory.validateLoggedIn(function(user){
 			$scope.user = user;
 		});
 	};
-	getLoggedUser();
+	validateLoggedIn();
 	$scope.createGroup = function(newgroup) {
 		userFactory.createGroup (newgroup)
 	};

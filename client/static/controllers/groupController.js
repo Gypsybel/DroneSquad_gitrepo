@@ -33,8 +33,13 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
       $scope.insta = data;
     })
   };
-  // insta("2227039481.eec5c8b.bcc5f8c4c8ff4e3894df7cf3bce973c7");
 
-
+  function getLoggedUser() {
+    userFactory.getLoggedUser(function(user) {
+      $scope.user = user;
+      console.log(user);
+    });
+  };
+  getLoggedUser();
 
 }])

@@ -14,9 +14,11 @@ module.exports = {
 		var user = new User(req.body);
 		user.save(function(err){
 			if (err){
+        console.log(err);
 				res.status(500).send("Users did not save");
 			}
       else{
+        console.log(user);
   			req.session.user = req.body;
         res.sendStatus(200);
 			}
@@ -37,6 +39,7 @@ module.exports = {
 	},
 
   logout: function (req, res) {
+    console.log("Logged out the user");
     req.session.destroy();
     res.redirect('/');
   },

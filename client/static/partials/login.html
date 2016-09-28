@@ -1,4 +1,4 @@
-<div ng-controller='loginregController'>
+<div ng-controller='loginController'>
 	<div class="row .center-align">
 		<div class="col s4 offset-s4 ">
 			<div ng-repeat="error in errors">
@@ -10,10 +10,10 @@
 				<img src="../images/ds-logo-sm-orange.png" height="60px">
 			</div>
 			<form>
-				<label>Email: <input type="email" ng-model="login.email" value=""></label>
-				<label>Password: <input type="password" ng-model="login.password" value=""></label>
+				<label>Email: <input type="email" ng-model="user.email" value=""></label>
+				<label>Password: <input type="password" ng-model="user.password" value=""></label>
 				<div class="center-align">
-					<a class="waves-effect waves-light btn-large bgorange" ng-click='loginUser(login)'>REGISTER</a>
+					<a href class="waves-effect waves-light btn-large bgorange" ng-click='loginUser(user)'>LOG IN</a>
 					<p class="center-align"><a href="#/register">Don't have an account yet? Sign up.</a></p>
 				</div>
 			</form>

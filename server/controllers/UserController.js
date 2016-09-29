@@ -132,27 +132,48 @@ module.exports = {
     })
   },
 
+  instagramauth: function(req, res){
+    console.log(req);
+    res.json(req);
+  },
+
   updateInstagram: function(req, res){
     // var temp = Url.parse(req.url)
-    var token = req.params.code;
-    Group.findOne({_id:req.session.group._id}, function(err, group){
-      if(err){
-        console.log("failed to find group in updateInstagram" + err);
-        res.redirect('/group/'+req.session.group._id)
-      }
-      else{
-        group.instagram_token = token;
-        group.save(function(err){
-          if (err) {
-            console.log("had trouble updating instagram_token");
-          }
-          else {
-            console.log(token);
-            res.redirect('/group/'+req.session.group._id)
-          }
-        })
-      }
-    })
+    var code = req.params.code;
+    var data = {
+      'client_id': 'ed0b913c94f94440baf6218a95fa4ebf',
+      'grant_type': 'authorization_code',
+      'redirect_uri': 'http://www.partyhard24-7.com/instagram/',
+      'code': code,
+      'url': 'https://api.instagram.com/oauth/access_token'
+    }
+    req.post({
+      method: 'POST',
+      url: 'https://api.instagram.com/oauth/access_token',
+      data: JSON.stringify(data)
+    }),
+    function(e, r, body){
+      res.json(body.access_token)
+    }
+
+    // Group.findOne({_id:req.session.group._id}, function(err, group){
+    //   if(err){
+    //     console.log("failed to find group in updateInstagram" + err);
+    //     res.redirect('/group/'+req.session.group._id)
+    //   }
+    //   else{
+    //     group.instagram_token = token;
+    //     group.save(function(err){
+    //       if (err) {
+    //         console.log("had trouble updating instagram_token");
+    //       }
+    //       else {
+    //         console.log(token);
+    //         res.redirect('/group/'+req.session.group._id)
+    //       }
+    //     })
+    //   }
+    // })
   },
 
 }

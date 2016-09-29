@@ -6,7 +6,7 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
   {coordinate_x: "35.5", coordinate_y:"140.4"},{coordinate_x: "35.7", coordinate_y:"140.7"}]
 
   // $scope.group = {};
-
+  $scope.authorization = false;
   function getGroup(id, instaFunc, getLoggedUserFunc){
     userFactory.getGroup(id, function(group){
       $scope.group=group;

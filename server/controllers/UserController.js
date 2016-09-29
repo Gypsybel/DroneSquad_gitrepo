@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Group = mongoose.model('Group');
 var Meetup = mongoose.model('Meetup');
+var Url = require('url');
 
 module.exports = {
 
@@ -133,7 +134,8 @@ module.exports = {
 
   updateInstagram: function(req, res){
     console.log(req);
-    token = req.params;
+    var temp = Url.parse(req.url)
+    var token = temp.hash;
     Group.findOne({_id:req.session.group._id}, function(err, group){
       if(err){
         console.log("failed to find group in updateInstagram" + err);

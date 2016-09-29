@@ -133,8 +133,6 @@ module.exports = {
   },
 
   updateInstagram: function(req, res){
-    console.log(req);
-    res.json(req)
     // var temp = Url.parse(req.url)
     var token = "temp";
     Group.findOne({_id:req.session.group._id}, function(err, group){

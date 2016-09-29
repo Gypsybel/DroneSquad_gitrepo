@@ -20,7 +20,7 @@ var GroupSchema = new Schema({
   instagram_token: {type:String, default: "1530892949.ed0b913.943f2babd79c4c2cb818320af4058628"},
   created_at: Date,
   image_url: {type: String, default: "https://d30y9cdsu7xlg0.cloudfront.net/png/103844-200.png"},
-  _users: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  _members: [{type: Schema.Types.ObjectId, ref: 'User'}],
   _flying_location: {type: Schema.Types.ObjectId, ref: 'Location'},
   _meetups: [{type: Schema.Types.ObjectId, ref: 'Event'}],
   _organizers: [{type: Schema.Types.ObjectId, ref: 'User'}],

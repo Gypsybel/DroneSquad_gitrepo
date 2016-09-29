@@ -13,7 +13,7 @@
           <p>Location: {{group.city}}, {{group.state}}</p>
 
           <!-- pull in join date here -->
-          <p>On Drone Squad Since {{group.createdAt}}</p>
+          <p>On Drone Squad Since {{group.createdAt | date: MM/dd/yyy}}</p>
 
           <!-- pull in members count here -->
           <p>Members: 412</p>
@@ -27,6 +27,9 @@
           <!-- pull in organizers here -->
           <p>Organizers:</p>
           <p>Ethan and Sean</p>
+          <div ng-repeat="member in group._members">
+            <a ng-if="user.id != member" href="#/joingroup/{{group._id}}"><button>Join Group</button></a>
+          </div>
 
         </div>
         <div id="content" class="col s12 m4 l6">

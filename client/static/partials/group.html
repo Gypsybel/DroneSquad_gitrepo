@@ -1,8 +1,8 @@
 <div ng-controller='groupController'>
   <div id="main">
     <div class="main">
-      <div class="row">
-        <div id="sidebar" class="col s12 m4 l3">
+      <div id="content" class="row">
+        <div id="sidebar" class="col s3">
           <img src="{{group.image_url}}" class="responsive-img" alt="club logo" />
           <h2>{{group.name}}</h2>
           <p>Location: {{group.city}}, {{group.state}}</p>
@@ -18,7 +18,8 @@
           <p>Ethan and Sean</p>
             <button ng-if="membership == false" ng-click="joinGroup(user._id)">Join Group</button>
         </div>
-        <div id="content" class="col s12 m4 l6">
+
+        <div class="col s7">
           <h2>About Us</h2>
           <p>{{group.description}}</p>
           <hr>
@@ -31,31 +32,49 @@
           </div>
           <a ng-if="authorization == true" href="#/addmeetup/{{group._id}}"><button>Add New Event</button></a>
         </div>
-          <div class="center-align" id="instagram" class="col s12 m4 l3">
-            <h3>Instagram!</h3>
-              <!-- <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/&response_type=token
-">link your instagram here</a> -->
-              <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/instagram/&response_type=code
-">link your instagram here</a>
-            <div ng-repeat="image in insta.data | limitTo: 3" class="col s12 m4 l3 center-align">
-              <a href="{{image.link}}"><img class="insta_pic" src="{{image.images.standard_resolution.url}}" alt="" style="width: 100%"/></a>
+
+        <div class="col s2 center-align">
+          <div class="center-align " id="instagram">
+            <h5>@{{insta.data[0].user.username}}</h5>
+            <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/instagram/&response_type=code">link your instagram here</a>
+            <div ng-repeat="image in insta.data | limitTo: 3" class="center-align">
+              <a class="center-align" href="{{image.link}}"><img class="responsive-img center-align" src="{{image.images.standard_resolution.url}}"</> </a>
             </div>
           </div>
         </div>
-        <div class="row">
-            <div id="map" class="col s10 center-align">
-              <div id="mappp" class="col s10 center-align">
-              <ng-map center="{{group.city}}, {{group.state}}" zoom="13">
-                <marker position="{{group.city}}, {{group.state}}" title="{{group.name}}"
-                icon="../images/mapicon.png",
-                scale: 1.,
-                center="[{{group.city}}, {{group.state}}]"
-                dragglele="true"> </marker>
-              </ng-map>
-            </div>
-          </div>
 
+      </div>
+      <div id="maprow" class="row">
+        <div id="map" class="col s10 offset-s2 center-align">
+          <ng-map scrollwheel="false" center="{{group.city}}, {{group.state}}" zoom="13">
+            <marker position="{{group.city}}, {{group.state}}" title="{{group.name}}"
+            icon="../images/mapicon.png",
+            scale: 1.,
+            center="[{{group.city}}, {{group.state}}]"
+            dragglele="true"> </marker>
+          </ng-map>
         </div>
       </div>
+    </div>
+
+    
+    <!-- Modal Trigger -->
+<div class="col">
+    <a class='btn' href='#demoModal' modal>Show Modal</a>
+</div>
+<!-- Modal Structure -->
+<div id="demoModal" class="modal">
+    <div class="modal-content">
+        <h4>Modal header</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
+
+
+
+
   </div>
 </div>

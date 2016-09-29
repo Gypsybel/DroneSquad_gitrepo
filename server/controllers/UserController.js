@@ -147,13 +147,17 @@ module.exports = {
       'code': code,
       'url': 'https://api.instagram.com/oauth/access_token'
     }
-    Request.post({
+    Request({
       method: 'POST',
       url: 'https://api.instagram.com/oauth/access_token',
-      data: JSON.stringify(data)
-    }),
-    function(e, r, body){
-      res.json(body.access_token)
+      data: data,
+    }), function(error, response, body){
+      if(error){
+        console.log(error);
+      }
+      else{
+        console.log(response, body);
+      }
     }
 
     // Group.findOne({_id:req.session.group._id}, function(err, group){

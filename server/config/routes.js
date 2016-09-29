@@ -8,13 +8,13 @@ module.exports = function(app){
   app.get('/meetups', userRoutes.getAllMeetups);
   app.get('/getLoggedUser', userRoutes.getLoggedUser);
   app.get('/logout', userRoutes.logout);
+	app.get('/instagram/', userRoutes.updateInstagram);	
 
   // Authenticate User For Following Routes
   app.use(userAuth);
   app.get('/validateLoggedIn', userRoutes.getLoggedUser)
   app.post('/addmeetup/:id', userRoutes.addMeetup);
   app.post('/addgroup', userRoutes.createGroup);
-  app.get('/instagram/', userRoutes.updateInstagram);
   app.get('/instagramauth', userRoutes.instagramauth);
   app.post('/joingroup/:userid', userRoutes.joinGroup);
 }

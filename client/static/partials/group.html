@@ -47,7 +47,7 @@
         </div>
           <div class="center-align" id="instagram" class="col s12 m4 l3">
             <h3>Instagram!</h3>
-              <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/&response_type=token
+              <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/instagram/&response_type=token
 ">link your instagram here</a>
             <div ng-repeat="image in insta.data | limitTo: 3" class="col s2">
               <a href="{{image.link}}"><img class="insta_pic" src="{{image.images.standard_resolution.url}}" alt="" style="width: 100%"/></a>

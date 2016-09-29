@@ -159,7 +159,13 @@ module.exports = {
         res.json(error);
       }
       else{
-        var token = body.access_token;
+	console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX response follows");
+	console.log(response);
+	console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX body follows");
+	console.log(body);
+	console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX body.access_token follows");
+	console.log(JSON.parse(body)['access_token']);
+        var token = JSON.parse(body)['access_token'];
         Group.update({_id:req.session.group._id}, {$set: {instagram_token: token}}, function(err){
           if (err) {
             console.log("had trouble updating instagram_token" + err);

@@ -10,6 +10,7 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
   function getGroup(id, instaFunc, getLoggedUserFunc){
     userFactory.getGroup(id, function(group){
       $scope.group=group;
+	console.log(group);
       instaFunc(group.instagram_token);
       getLoggedUserFunc(group);
     });

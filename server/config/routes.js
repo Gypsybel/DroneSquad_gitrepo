@@ -7,12 +7,12 @@ module.exports = function(app){
   app.get('/meetups/:id', userRoutes.getMeetups);
   app.get('/meetups', userRoutes.getAllMeetups);
   app.get('/getLoggedUser', userRoutes.getLoggedUser);
+  app.get('/logout', userRoutes.logout);
 
   // Authenticate User For Following Routes
   app.use(userAuth);
   app.get('/validateLoggedIn', userRoutes.getLoggedUser)
   app.post('/addmeetup/:id', userRoutes.addMeetup);
-  app.get('/logout', userRoutes.logout);
   app.post('/addgroup', userRoutes.createGroup);
 }
 function userAuth(req,res,next){

@@ -40,16 +40,12 @@
             <p>Description: {{meetup.description}}</p>
             <p>Where: {{meetup.location}}</p>
           </div>
-          <div ng-repeat="organizer in group._organizers">
-            <a ng-if="user._id == organizer" href="#/addmeetup/{{group._id}}"><button>Add New Event</button></a>
-          </div>
+          <a ng-if="authorization == true" href="#/addmeetup/{{group._id}}"><button>Add New Event</button></a>
         </div>
           <div class="center-align" id="instagram" class="col s12 m4 l3">
             <h3>Instagram!</h3>
-            <div ng-repeat="organizer in group._organizers">
-              <a ng-if="user._id == organizer" href="https://api.instagram.com/oauth/authorize/?client_id=eec5c8b62a1949619253a61daee56576&redirect_uri=REDIRECT-URI&response_type=token
+              <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=eec5c8b62a1949619253a61daee56576&redirect_uri=REDIRECT-URI&response_type=token
   ">link your instagram here</a>
-            </div>
             <div ng-repeat="image in insta.data | limitTo: 3" class="col s2">
               <a href="{{image.link}}"><img class="insta_pic" src="{{image.images.standard_resolution.url}}" alt="" style="width: 100%"/></a>
 

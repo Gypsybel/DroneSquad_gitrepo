@@ -7,15 +7,14 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
 
   // $scope.group = {};
 
-  function getGroup(id, callback){
-    userFactory.getGroup(id, insta, function(group){
+  function getGroup(id, instaFunc, getLoggedUserFunc){
+    userFactory.getGroup(id, function(group){
       $scope.group=group;
-      callback();
+      instaFunc(group.instagram_token);
+      getLoggedUserFunc(group);
     });
   };
-  getGroup($routeParams.id, function(){
-    console.log("in callback",$scope.group);
-  });
+  getGroup($routeParams.id, insta, getLoggedUser);
 
 
   function getMeetups(id) {
@@ -38,12 +37,18 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
     })
   };
 
-  function getLoggedUser() {
+  function getLoggedUser(group) {
     userFactory.getLoggedUser(function(user) {
       $scope.user = user;
-      console.log(user);
+      for(var i=0; i<group._organizers.length; i++){
+        if(user._id==group._organizers[i]){
+          $scope.authorization = true;
+          console.log("user authorized for this group");
+          return true;
+        }
+      }
+      console.log("user not authorized");
     });
   };
-  getLoggedUser();
 
 }])

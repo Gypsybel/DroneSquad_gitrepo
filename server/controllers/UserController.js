@@ -131,8 +131,7 @@ module.exports = {
   },
 
   updateInstagram: function(req, res){
-    console.log(req);
-    res.redirect('/');
+    res.json(req);
     // Group.findOne({_id:req.session.group._id}, function(err, group){
     //   if(err){
     //     console.log("failed to find group in updateInstagram" + err);

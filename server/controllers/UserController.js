@@ -132,7 +132,7 @@ module.exports = {
 
   updateInstagram: function(req, res){
     console.log(req.originalUrl.slice(53,req.originalUrl.length));
-    token = req.originalUrl.slice(53,req.originalUrl.length)
+    token = req.originalUrl.slice(53,req.originalUrl.length);
     Group.findOne({_id:req.session.group._id}, function(err, group){
       if(err){
         console.log("failed to find group in updateInstagram" + err);
@@ -140,8 +140,15 @@ module.exports = {
       }
       else{
         group.instagram_token = token;
-        console.log(token);
-        res.redirect('/group/'+req.session.group._id)
+        group.save(function(err){
+          if (err) {
+            console.log("had trouble updating instagram_token");
+          }
+          else {
+            console.log(token);
+            res.redirect('/group/'+req.session.group._id)
+          }
+        })
       }
     })
   },

@@ -7,6 +7,7 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
   
   // $scope.group = {};
   $scope.authorization = false;
+  $scope.membership = true;
   function getGroup(id, instaFunc, getLoggedUserFunc){
     userFactory.getGroup(id, function(group){
       $scope.group=group;
@@ -30,7 +31,6 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
   getMeetups($routeParams.id);
 
   function insta(token){
-    console.log(token);
     $http.jsonp('https://api.instagram.com/v1/users/self/media/recent/?access_token='+token+"&callback=JSON_CALLBACK")
     .success(function(data){
       $scope.insta = data;
@@ -43,12 +43,21 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
       for(var i=0; i<group._organizers.length; i++){
         if(user._id==group._organizers[i]){
           $scope.authorization = true;
-          console.log("user authorized for this group");
+        }
+      }
+      for(var i=0; i<group._members.length; i++){
+        if(user._id==group._members[i]){
+          $scope.membership = true;
           return true;
         }
       }
-      console.log("user not authorized");
+      $scope.membership = false;
     });
+  };
+
+  $scope.joinGroup = function(userId) {
+    console.log(userId);
+    userFactory.joinGroup($routeParams.id, userId)
   };
 
 }])

@@ -3,40 +3,26 @@
     <div class="main">
       <div class="row">
         <div id="sidebar" class="col s12 m4 l3">
-          <!-- dynamically pull in club photo url here  -->
           <img src="{{group.image_url}}" class="responsive-img" alt="club logo" />
-
-          <!-- dynamically render club name here -->
           <h2>{{group.name}}</h2>
-
-          <!-- pull in city name here -->
           <p>Location: {{group.city}}, {{group.state}}</p>
-
-          <!-- pull in join date here -->
           <p>On Drone Squad Since {{group.createdAt | date: MM/dd/yyy}}</p>
-
           <!-- pull in members count here -->
           <p>Members: 412</p>
-
           <!-- pull in Upcoming Meetups count here -->
           <p>Upcoming Meetups: {{meetupcount}}</p>
-
           <!-- pull in past meetups count here -->
           <p>Past Meetups: 6</p>
-
           <!-- pull in organizers here -->
           <p>Organizers:</p>
           <p>Ethan and Sean</p>
-          <div ng-repeat="member in group._members">
-            <a ng-if="user.id != member" href="#/joingroup/{{group._id}}"><button>Join Group</button></a>
-          </div>
-
+            <button ng-if="membership == false" ng-click="joinGroup(user._id)">Join Group</button>
         </div>
         <div id="content" class="col s12 m4 l6">
           <h2>About Us</h2>
           <p>{{group.description}}</p>
           <hr>
-          <button>Upcoming</button>
+          <h4>Upcoming Events</h4>
           <div ng-repeat="meetup in meetups">
             <h5>{{meetup.name}}</h5>
             <p>Date: {{meetup.date | date: MM/dd/yyy}}</p>

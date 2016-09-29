@@ -8,6 +8,7 @@ var Url = require('url');
 module.exports = {
 
   getLoggedUser: function(req, res){
+    console.log(req.session.user);
     res.json(req.session.user);
   },
 
@@ -36,6 +37,7 @@ module.exports = {
 			else if(req.body.password == user.password){
         console.log("login successful");
 				req.session.user = user;
+        console.log(req.session.user);
 				res.sendStatus(200);
 			}
 		})
@@ -171,30 +173,24 @@ module.exports = {
         })
       }
     });
-    // curl -F 'client_id=ed0b913c94f94440baf6218a95fa4ebf' \
-    //     -F 'client_secret=CLIENT_SECRET' \
-    //     -F 'grant_type=authorization_code' \
-    //     -F 'redirect_uri=AUTHORIZATION_REDIRECT_URI' \
-    //     -F 'code=CODE' \
-    //     https://api.instagram.com/oauth/access_token
-    // Group.findOne({_id:req.session.group._id}, function(err, group){
-    //   if(err){
-    //     console.log("failed to find group in updateInstagram" + err);
-    //     res.redirect('/group/'+req.session.group._id)
-    //   }
-    //   else{
-    //     group.instagram_token = token;
-    //     group.save(function(err){
-    //       if (err) {
-    //         console.log("had trouble updating instagram_token");
-    //       }
-    //       else {
-    //         console.log(token);
-    //         res.redirect('/group/'+req.session.group._id)
-    //       }
-    //     })
-    //   }
-    // })
+
   },
 
+  joinGroup: function (req, res) {
+    console.log('**************'+req.body);
+    Group.findOne({_id:req.body}, function (err, group){
+      if(err){
+        res.status(500).send("Had trouble finding group")
+      } else{
+        Group._members.push(req.session.user._id);
+        Group.save(function(err) {
+          if(err){
+            res.status(500).send("did not join group")
+          } else{
+            res.sendStatus(200);
+            }
+          })
+        }
+      });
+    }
 }

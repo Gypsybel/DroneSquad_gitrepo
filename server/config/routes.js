@@ -16,6 +16,7 @@ module.exports = function(app){
   app.post('/addgroup', userRoutes.createGroup);
   app.get('/instagram/', userRoutes.updateInstagram);
   app.get('/instagramauth', userRoutes.instagramauth);
+  app.post('/joingroup/:userid', userRoutes.joinGroup);
 }
 function userAuth(req,res,next){
   if (req.session.user){

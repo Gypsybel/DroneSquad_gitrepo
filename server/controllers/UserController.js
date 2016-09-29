@@ -139,6 +139,8 @@ module.exports = {
 
   updateInstagram: function(req, res){
     // var temp = Url.parse(req.url)
+    console.log(req.params);
+    console.log(req.params.code);
     var Code = req.params.code;
     var data = {
       'client_id': 'ed0b913c94f94440baf6218a95fa4ebf',

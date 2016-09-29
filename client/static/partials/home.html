@@ -4,6 +4,9 @@
       <div class="col s12">
         <ng-map zoom-to-include-markers="true" scrollwheel="false">
           <marker ng-repeat="location in locations" position="{{location.coordinates}}",
+        <h2 class="center-align">Flying Locations</h2>
+        <ng-map zoom-to-include-markers="true">
+          <marker ng-repeat="location in locations" position="{{location.coordinate_x}}, {{location.coordinate_y}}",
           title="{{group.name}}",
           icon="../images/mapicon.png",
           scale: 1.,
@@ -13,18 +16,17 @@
     </div>
     <div class="row">
       <div class="col s8 center-align">
-        <h2 id="choose_group">Choose Your Group</h2><a ng-if="user.name" href="#/addgroup">or add one!</a>
-      </div>
-        <div>
-          <table id="grouptable" class="highlight col s8  z-depth-1 center-align">
-            <thead>
-              <tr>
-                <th data-field="id">Name</th>
-                <th data-field="name">Location</th>
-                <th data-field="price">Members</th>
-                <th>Show</th>
-              </tr>
-            </thead>
+        <h2 id="choose_group">Choose Your Group</h2>
+        <a ng-if="user.name" href="#/addgroup">or add one!</a>
+        <table id="grouptable" class="highlight  z-depth-1 center-align">
+          <thead>
+            <tr>
+              <th data-field="id">Name</th>
+              <th data-field="name">Location</th>
+              <th data-field="price">Members</th>
+              <th>Show</th>
+            </tr>
+          </thead>
           <tbody>
             <tr ng-repeat= "group in groups">
               <td>{{group.name}}</td>
@@ -34,12 +36,15 @@
             </tr>
           </tbody>
         </table>
-        </div>
-        <!-- start event ticker here -->
-        <h3>Upcoming Events</h3>
-        <div ng-repeat="meetup in meetups">
-          <p><a href="#/group/{{meetup._group._id}}">{{meetup._group.name}}: {{meetup.name}}</a></p>
-
+      </div>
+        <div class="col s4 section">
+          <h3>Upcoming Events</h3>
+            <div ng-repeat="meetup in meetups">
+              <p>Group:<a href="#/group/{{meetup._group._id}}"> {{meetup._group.name}}</a></p>
+              <p>Description: {{meetup.name}}</p>
+              <p>Date: {{meetup.date | date: MM/dd/yyy}}</p>
+              <hr>
+            </div>
         </div>
       </div>
     </div>

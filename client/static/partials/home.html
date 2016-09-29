@@ -2,6 +2,8 @@
   <div class="main">
     <div class="row">
       <div class="col s12">
+        <ng-map zoom-to-include-markers="true" scrollwheel="false">
+          <marker ng-repeat="location in locations" position="{{location.coordinates}}",
         <h2 class="center-align">Flying Locations</h2>
         <ng-map zoom-to-include-markers="true">
           <marker ng-repeat="location in locations" position="{{location.coordinate_x}}, {{location.coordinate_y}}",

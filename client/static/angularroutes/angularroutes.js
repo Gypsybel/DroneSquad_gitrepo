@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngRoute', 'ngMap']);
 
-app.config(['$httpProvider', '$routeProvider', '$routeParams', function($httpProvider, $routeProvider, $routeParams){
+app.config(['$httpProvider', '$routeProvider', function($httpProvider, $routeProvider){
   $httpProvider.interceptors.push(
         function($q, $location) {
         return {
@@ -34,14 +34,13 @@ app.config(['$httpProvider', '$routeProvider', '$routeParams', function($httpPro
         .when('/addmeetup/:id', {
             templateUrl:'partials/addmeetup.html'
         })
-        .when('access_token=:token', {
-            templateUrl:'', controller: function($location) {
-              console.log($location.path());
-              console.log("test");
-              console.log($routeParams.token);
-              console.log(token);
-            }
-        })
+        // access_token=:token
+        // .when('/access_token=:token', {
+        //     templateUrl:'', controller: function($location) {
+        //       console.log("test");
+              // console.log($location.hash());
+        //     }
+        // })
         .otherwise({
             redirectTo:'/'
         })

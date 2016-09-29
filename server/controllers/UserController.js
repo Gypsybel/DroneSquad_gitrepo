@@ -146,19 +146,21 @@ module.exports = {
       'redirect_uri': 'http://www.partyhard24-7.com/instagram/',
       'code': code,
       'url': 'https://api.instagram.com/oauth/access_token'
-    }
+    };
     Request({
       method: 'POST',
       url: 'https://api.instagram.com/oauth/access_token',
       data: data,
-    }), function(error, response, body){
+    }, function(error, response, body){
       if(error){
         console.log(error);
+        res.json(error);
       }
       else{
         console.log(response, body);
+        res.json(error);
       }
-    }
+    });
 
     // Group.findOne({_id:req.session.group._id}, function(err, group){
     //   if(err){

@@ -34,6 +34,13 @@ app.config(['$httpProvider', '$routeProvider', function($httpProvider, $routePro
         .when('/addmeetup/:id', {
             templateUrl:'partials/addmeetup.html'
         })
+        // access_token=:token
+        // .when('/access_token=:token', {
+        //     templateUrl:'', controller: function($location) {
+        //       console.log("test");
+              // console.log($location.hash());
+        //     }
+        // })
         .otherwise({
             redirectTo:'/'
         })

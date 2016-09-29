@@ -14,6 +14,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
+<<<<<<< HEAD
     "mongoose": "^4.6.1"
   },
   "repository": {
@@ -25,4 +26,9 @@
   },
   "homepage": "https://github.com/Jacobkmiller/DroneSquad_gitrepo#readme",
   "description": ""
+=======
+    "mongoose": "^4.6.1",
+    "request": "^2.75.0"
+  }
+>>>>>>> c72b5126165a1d43b35adbde733da1759bad0a6d
 }

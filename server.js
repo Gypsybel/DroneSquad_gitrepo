@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var url = require('url');
 
 var app = express();
 var sessionConfig = {

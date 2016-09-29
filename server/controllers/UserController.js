@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
-
+var Request = require('request');
 var User = mongoose.model('User');
 var Group = mongoose.model('Group');
 var Meetup = mongoose.model('Meetup');
+var Url = require('url');
 
 module.exports = {
 
@@ -82,11 +83,13 @@ module.exports = {
     });
   },
   getGroup: function (req, res) {
+    console.log(req._parsedOriginalUrl.href);
     Group.findOne({_id:req.params.id}, function(err, group){
       if (err){
         res.status(500).send("Had trouble finding group");
       }
       else{
+        req.session.group = group;
         res.json(group);
       }
     });
@@ -129,5 +132,81 @@ module.exports = {
     })
   },
 
+  instagramauth: function(req, res){
+    console.log(req);
+    res.json(req);
+  },
+
+  updateInstagram: function(req, res){
+    // var temp = Url.parse(req.url)
+	console.log('update insta running');
+	if(req.query == null){
+		res.redirect('/#/group/req.session.group._id');
+	}
+    console.log(req.query);
+    console.log(req.query.code);
+    var Code = req.query.code;
+    var data = {
+      client_secret: '75e70f094dce44eaa9c2b35c731b8a2e',
+      client_id: 'ed0b913c94f94440baf6218a95fa4ebf',
+      grant_type: 'authorization_code',
+      redirect_uri: 'http://www.partyhard24-7.com/instagram/',
+      code: Code,
+    };
+    Request({
+      method: 'POST',
+      url: 'https://api.instagram.com/oauth/access_token',
+      form: data,
+    }, function(error, response, body){
+      if(error){
+        console.log(error);
+        res.json(error);
+      }
+      else{
+	var parsedBody = JSON.parse(body);
+        var token = parsedBody['access_token'];
+	console.log("parsed body follows");
+	console.log(parsedBody);
+	console.log('parsedBody.user follows');
+	console.log(parsedBody.user);
+	console.log("parsedBody.user['profile_picture']");
+	console.log(parsedBody.user['profile_picture']);
+        var profile = parsedBody.user['profile_picture'];
+        Group.update({_id:req.session.group._id}, {$set: {instagram_token: token, image_url: profile}}, function(err){
+          if (err) {
+            console.log("had trouble updating instagram_token" + err);
+          }
+          else {
+		console.log('updated insta info!');
+            res.redirect('/#/group/'+req.session.group._id);
+          }
+        })
+      }
+    });
+    // curl -F 'client_id=ed0b913c94f94440baf6218a95fa4ebf' \
+    //     -F 'client_secret=CLIENT_SECRET' \
+    //     -F 'grant_type=authorization_code' \
+    //     -F 'redirect_uri=AUTHORIZATION_REDIRECT_URI' \
+    //     -F 'code=CODE' \
+    //     https://api.instagram.com/oauth/access_token
+    // Group.findOne({_id:req.session.group._id}, function(err, group){
+    //   if(err){
+    //     console.log("failed to find group in updateInstagram" + err);
+    //     res.redirect('/group/'+req.session.group._id)
+    //   }
+    //   else{
+    //     group.instagram_token = token;
+    //     group.save(function(err){
+    //       if (err) {
+    //         console.log("had trouble updating instagram_token");
+    //       }
+    //       else {
+    //         console.log(token);
+    //         res.redirect('/group/'+req.session.group._id)
+    //       }
+    //     })
+    //   }
+    // })
+  },
 
 }

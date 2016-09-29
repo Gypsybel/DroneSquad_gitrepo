@@ -13,7 +13,7 @@
           <p>Location: {{group.city}}, {{group.state}}</p>
 
           <!-- pull in join date here -->
-          <p>On Drone Squad Since {{group.createdAt}}</p>
+          <p>On Drone Squad Since {{group.createdAt | date: MM/dd/yyy}}</p>
 
           <!-- pull in members count here -->
           <p>Members: 412</p>
@@ -27,6 +27,9 @@
           <!-- pull in organizers here -->
           <p>Organizers:</p>
           <p>Ethan and Sean</p>
+          <div ng-repeat="member in group._members">
+            <a ng-if="user.id != member" href="#/joingroup/{{group._id}}"><button>Join Group</button></a>
+          </div>
 
         </div>
         <div id="content" class="col s12 m4 l6">
@@ -40,16 +43,14 @@
             <p>Description: {{meetup.description}}</p>
             <p>Where: {{meetup.location}}</p>
           </div>
-          <div ng-repeat="organizer in group._organizers">
-            <a ng-if="user._id == organizer" href="#/addmeetup/{{group._id}}"><button>Add New Event</button></a>
-          </div>
+          <a ng-if="authorization == true" href="#/addmeetup/{{group._id}}"><button>Add New Event</button></a>
         </div>
           <div class="center-align" id="instagram" class="col s12 m4 l3">
             <h3>Instagram!</h3>
-            <div ng-repeat="organizer in group._organizers">
-              <a ng-if="user._id == organizer" href="https://api.instagram.com/oauth/authorize/?client_id=eec5c8b62a1949619253a61daee56576&redirect_uri=REDIRECT-URI&response_type=token
-  ">link your instagram here</a>
-            </div>
+              <!-- <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/&response_type=token
+">link your instagram here</a> -->
+              <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/instagram/&response_type=code
+">link your instagram here</a>
             <div ng-repeat="image in insta.data | limitTo: 3" class="col s2">
               <a href="{{image.link}}"><img class="insta_pic" src="{{image.images.standard_resolution.url}}" alt="" style="width: 100%"/></a>
 

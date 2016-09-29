@@ -82,6 +82,7 @@ module.exports = {
     });
   },
   getGroup: function (req, res) {
+    console.log(req._parsedOriginalUrl.href);
     Group.findOne({_id:req.params.id}, function(err, group){
       if (err){
         res.status(500).send("Had trouble finding group");
@@ -131,8 +132,7 @@ module.exports = {
   },
 
   updateInstagram: function(req, res){
-    console.log(req.originalUrl.slice(53,req.originalUrl.length));
-    token = req;
+    token = req._parsedOriginalUrl.href;
     Group.findOne({_id:req.session.group._id}, function(err, group){
       if(err){
         console.log("failed to find group in updateInstagram" + err);

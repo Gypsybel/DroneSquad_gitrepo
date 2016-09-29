@@ -131,18 +131,19 @@ module.exports = {
   },
 
   updateInstagram: function(req, res){
-    res.json(req);
-    // Group.findOne({_id:req.session.group._id}, function(err, group){
-    //   if(err){
-    //     console.log("failed to find group in updateInstagram" + err);
-    //     res.redirect('/group/'+req.session.group._id)
-    //   }
-    //   else{
-    //     group.instagram_token = token;
-    //     console.log(token);
-    //     res.redirect('/group/'+req.session.group._id)
-    //   }
-    // })
+    console.log(req.originalUrl.slice(53,req.originalUrl.length));
+    token = req.originalUrl.slice(53,req.originalUrl.length)
+    Group.findOne({_id:req.session.group._id}, function(err, group){
+      if(err){
+        console.log("failed to find group in updateInstagram" + err);
+        res.redirect('/group/'+req.session.group._id)
+      }
+      else{
+        group.instagram_token = token;
+        console.log(token);
+        res.redirect('/group/'+req.session.group._id)
+      }
+    })
   },
 
 }

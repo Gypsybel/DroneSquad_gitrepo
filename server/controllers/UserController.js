@@ -139,6 +139,10 @@ module.exports = {
 
   updateInstagram: function(req, res){
     // var temp = Url.parse(req.url)
+	console.log('update insta running');
+	if(req.query == null){
+		res.redirect('/#/group/req.session.group._id');
+	}
     console.log(req.query);
     console.log(req.query.code);
     var Code = req.query.code;
@@ -159,14 +163,22 @@ module.exports = {
         res.json(error);
       }
       else{
-        var token = JSON.parse(body)['access_token'];
-        var profile = JSON.parse(body)['profile_picture'];
+	var parsedBody = JSON.parse(body);
+        var token = parsedBody['access_token'];
+	console.log("parsed body follows");
+	console.log(parsedBody);
+	console.log('parsedBody.user follows');
+	console.log(parsedBody.user);
+	console.log("parsedBody.user['profile_picture']");
+	console.log(parsedBody.user['profile_picture']);
+        var profile = parsedBody.user['profile_picture'];
         Group.update({_id:req.session.group._id}, {$set: {instagram_token: token, image_url: profile}}, function(err){
           if (err) {
             console.log("had trouble updating instagram_token" + err);
           }
           else {
-            res.redirect('www.partyhard24-7.com/#/group/'+req.session.group._id);
+		console.log('updated insta info!');
+            res.redirect('/#/group/'+req.session.group._id);
           }
         })
       }

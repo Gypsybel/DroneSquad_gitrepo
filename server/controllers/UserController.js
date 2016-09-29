@@ -159,20 +159,14 @@ module.exports = {
         res.json(error);
       }
       else{
-	console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX response follows");
-	console.log(response);
-	console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX body follows");
-	console.log(body);
-	console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX body.access_token follows");
-	console.log(JSON.parse(body)['access_token']);
         var token = JSON.parse(body)['access_token'];
-        Group.update({_id:req.session.group._id}, {$set: {instagram_token: token}}, function(err){
+        var profile = JSON.parse(body)['profile_picture'];
+        Group.update({_id:req.session.group._id}, {$set: {instagram_token: token, image_url: profile}}, function(err){
           if (err) {
             console.log("had trouble updating instagram_token" + err);
           }
           else {
-            console.log("successfully updated instagram_token" + token);
-            res.redirect('/group/'+req.session.group._id);
+            res.redirect('www.partyhard24-7.com/#/group/'+req.session.group._id);
           }
         })
       }

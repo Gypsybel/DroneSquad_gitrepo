@@ -99,5 +99,16 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
       })
     };
 
+    factory.joinGroup = function (groupId, userId) {
+      console.log(groupId+'***********'+userId);
+      $http({
+        url:'/joingroup/'+userId,
+        method: "POST",
+        data: groupId
+      }).then(function(res){
+        $location.url('/group/'+groupId);
+      })
+    };
+
     return factory;
 }])

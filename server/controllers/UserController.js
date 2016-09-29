@@ -7,6 +7,7 @@ var Meetup = mongoose.model('Meetup');
 module.exports = {
 
   getLoggedUser: function(req, res){
+    console.log(req.session.user);
     res.json(req.session.user);
   },
 
@@ -35,6 +36,7 @@ module.exports = {
 			else if(req.body.password == user.password){
         console.log("login successful");
 				req.session.user = user;
+        console.log(req.session.user);
 				res.sendStatus(200);
 			}
 		})
@@ -129,5 +131,21 @@ module.exports = {
     })
   },
 
-
+  joinGroup: function (req, res) {
+    console.log('**************'+req.body);
+    Group.findOne({_id:req.body}, function (err, group){
+      if(err){
+        res.status(500).send("Had trouble finding group")
+      } else{
+        Group._members.push(req.session.user._id);
+        Group.save(function(err) {
+          if(err){
+            res.status(500).send("did not join group")
+          } else{
+            res.sendStatus(200);
+            }
+          })
+        }
+      });
+    }
 }

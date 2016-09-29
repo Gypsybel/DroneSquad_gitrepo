@@ -2,6 +2,7 @@ app.controller('addMeetupController',[ '$scope', '$http','userFactory','$locatio
 
 	$scope.today = new Date ();
 	console.log($scope.today);
+	
 	$scope.addMeetup = function(meetup) {
     console.log(meetup);
 		userFactory.addMeetup ($routeParams.id, meetup)
@@ -11,5 +12,5 @@ app.controller('addMeetupController',[ '$scope', '$http','userFactory','$locatio
 		userFactory.validateLoggedIn();
 	}
 	validateLoggedIn();
-	
+
 }])

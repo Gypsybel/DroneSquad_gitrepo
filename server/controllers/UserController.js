@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var Request = require('request');
 var User = mongoose.model('User');
 var Group = mongoose.model('Group');
 var Meetup = mongoose.model('Meetup');
@@ -147,7 +147,7 @@ module.exports = {
       'code': code,
       'url': 'https://api.instagram.com/oauth/access_token'
     }
-    req.post({
+    Request.post({
       method: 'POST',
       url: 'https://api.instagram.com/oauth/access_token',
       data: JSON.stringify(data)

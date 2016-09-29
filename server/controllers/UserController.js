@@ -143,16 +143,16 @@ module.exports = {
     console.log(req.query.code);
     var Code = req.query.code;
     var data = {
-      'client_secret': '75e70f094dce44eaa9c2b35c731b8a2e',
-      'client_id': 'ed0b913c94f94440baf6218a95fa4ebf',
-      'grant_type': 'authorization_code',
-      'redirect_uri': 'http://www.partyhard24-7.com/instagram/',
-      'code': Code,
+      client_secret: '75e70f094dce44eaa9c2b35c731b8a2e',
+      client_id: 'ed0b913c94f94440baf6218a95fa4ebf',
+      grant_type: 'authorization_code',
+      redirect_uri: 'http://www.partyhard24-7.com/instagram/',
+      code: Code,
     };
     Request({
       method: 'POST',
       url: 'https://api.instagram.com/oauth/access_token',
-      body: data,
+      form: data,
     }, function(error, response, body){
       if(error){
         console.log(error);

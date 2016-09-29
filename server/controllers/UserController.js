@@ -152,7 +152,7 @@ module.exports = {
     Request({
       method: 'POST',
       url: 'https://api.instagram.com/oauth/access_token',
-      data: data,
+      body: data,
     }, function(error, response, body){
       if(error){
         console.log(error);

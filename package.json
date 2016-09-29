@@ -1,10 +1,10 @@
 {
   "name": "miniMeanStore",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,14 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "mongoose": "^4.6.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jacobkmiller/DroneSquad_gitrepo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jacobkmiller/DroneSquad_gitrepo/issues"
+  },
+  "homepage": "https://github.com/Jacobkmiller/DroneSquad_gitrepo#readme",
+  "description": ""
 }

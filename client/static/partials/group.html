@@ -58,8 +58,8 @@
         </div>
         <div class="row">
             <div id="map" class="col s10 center-align">
-              <div id="mappp" class="col s10 center-align">
-              <ng-map center="{{group.city}}, {{group.state}}" zoom="13">
+              <div id="mappp" class="col s10 center-align offset-s2">
+              <ng-map center="{{group.city}}, {{group.state}}" scrollwheel="false" zoom="13">
                 <marker position="{{group.city}}, {{group.state}}" title="{{group.name}}"
                 icon="../images/mapicon.png",
                 scale: 1.,

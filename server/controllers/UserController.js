@@ -87,6 +87,7 @@ module.exports = {
         res.status(500).send("Had trouble finding group");
       }
       else{
+        req.session.group = group;
         res.json(group);
       }
     });
@@ -129,5 +130,19 @@ module.exports = {
     })
   },
 
+  updateInstagram: function(req, res){
+    token = instaToken.slice(13,instaToken.length);
+    Group.findOne({_id:req.session.group._id}, function(err, group){
+      if(err){
+        console.log("failed to find group in updateInstagram" + err);
+        res.redirect('/group/'+req.session.group._id)
+      }
+      else{
+        group.instagram_token = token;
+        console.log(token);
+        res.redirect('/group/'+req.session.group._id)
+      }
+    })
+  },
 
 }

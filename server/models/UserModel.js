@@ -17,7 +17,7 @@ var GroupSchema = new Schema({
   description: String,
   city: String,
   state: String,
-  instagram_token: {type:String, default: "2227039481.eec5c8b.bcc5f8c4c8ff4e3894df7cf3bce973c7"},
+  instagram_token: {type:String, default: "1530892949.ed0b913.943f2babd79c4c2cb818320af4058628"},
   created_at: Date,
   image_url: {type: String, default: "https://d30y9cdsu7xlg0.cloudfront.net/png/103844-200.png"},
   _users: [{type: Schema.Types.ObjectId, ref: 'User'}],

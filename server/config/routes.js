@@ -14,6 +14,7 @@ module.exports = function(app){
   app.get('/validateLoggedIn', userRoutes.getLoggedUser)
   app.post('/addmeetup/:id', userRoutes.addMeetup);
   app.post('/addgroup', userRoutes.createGroup);
+  app.get('/instagram/:instaToken', userRoutes.updateInstagram);
 }
 function userAuth(req,res,next){
   if (req.session.user){

@@ -134,7 +134,7 @@ module.exports = {
 
   updateInstagram: function(req, res){
     // var temp = Url.parse(req.url)
-    var token = "temp";
+    var token = req.params.code;
     Group.findOne({_id:req.session.group._id}, function(err, group){
       if(err){
         console.log("failed to find group in updateInstagram" + err);

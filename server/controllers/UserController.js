@@ -159,8 +159,16 @@ module.exports = {
         res.json(error);
       }
       else{
-        console.log(response, body);
-        res.json(error);
+        var token = body.access_token;
+        Group.update({_id:req.session.group._id}, {$set: {instagram_token: token}}, function(err){
+          if (err) {
+            console.log("had trouble updating instagram_token" + err);
+          }
+          else {
+            console.log("successfully updated instagram_token" + token);
+            res.redirect('/group/'+req.session.group._id);
+          }
+        })
       }
     });
     // curl -F 'client_id=ed0b913c94f94440baf6218a95fa4ebf' \

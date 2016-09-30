@@ -33,7 +33,6 @@
             <tr>
               <th data-field="id">Name</th>
               <th data-field="name">Location</th>
-              <th data-field="price">Members</th>
               <th>Show</th>
             </tr>
           </thead>
@@ -41,7 +40,6 @@
             <tr ng-repeat= "group in groups">
               <td>{{group.name}}</td>
               <td>{{group.city}}, {{group.state}}</td>
-              <td>{{group.membercount}}</td>
               <td><a href="#/group/{{group._id}}">Visit {{group.name}} Page</a></td>
             </tr>
           </tbody>

@@ -1,14 +1,10 @@
 <div ng-controller='loginController'>
 	<div class="row .center-align">
 		<div class="col s4 offset-s4 ">
-			<div ng-repeat="error in errors">
-				<p>
-					{{error}}
-				</p>
-			</div>
 			<div class="center-align">
 				<img src="../images/ds-logo-sm-orange.png" height="60px">
 			</div>
+			<p class="red-text center">{{myLoginError}}</p>
 			<form>
 				<label>Email: <input type="email" ng-model="user.email" value=""></label>
 				<label>Password: <input type="password" ng-model="user.password" value=""></label>

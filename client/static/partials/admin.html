@@ -1,0 +1,52 @@
+<div ng-controller="adminController">
+  <div class="row">
+    <div class="col s4">
+      <h2>Users</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Delete</th>
+        </tr>
+        <tr ng-repeat='user in users'>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td><a class='btn' ng-click='deleteUser(user._id)'>Delete User</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col s4">
+      <h2>Events</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Delete</th>
+        </tr>
+        <tr ng-repeat='meetup in meetups'>
+          <td>{{meetup.name}}</td>
+          <td>{{meetup.email}}</td>
+          <td><a href="#" class='btn' ng-click='deleteMeetup({{meetup._id}})'>Delete Event</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col s4">
+      <h2>Groups</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Delete</th>
+        </tr>
+        <tr ng-repeat='group in groups'>
+          <td>{{group.name}}</td>
+          <td>{{group.description}}</td>
+          <td><a href="#" class='btn' ng-click='deleteGroup({{group._id}})'>Delete Group</a></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>

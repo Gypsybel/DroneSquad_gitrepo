@@ -200,6 +200,7 @@ module.exports = {
       if(err){
         res.status(500).send("Had trouble finding group")
       } else{
+        console.log(group);
         group._members.push(req.params.userid);
         group.save(function(err) {
           if(err){

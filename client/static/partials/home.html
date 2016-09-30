@@ -6,7 +6,6 @@
           <h2 class="center-align">Flying Locations</h2>
           <div class="col s12 right-align">
             <a ng-if="user == false" href='#/register' class="waves-effect waves-light btn bgorange">Log In / Register</a>
-            <a ng-if="user" href='/logout' class="waves-effect waves-light btn bgorange">Log Out</a>
           </div>
         <ng-map zoom-to-include-markers="true" scrollwheel="false">
           <marker ng-repeat="location in locations" position="{{location.coordinates}}",
@@ -18,8 +17,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col s12 l10 center-align">
+      <div class="col s12 l8">
         <h3 class="center-align">Choose Your Group</h3>
+      </div>
+      <div class="col s12 l4">
+        <h3>Upcoming Events</h3>
       </div>
     </div>
     <div class="row">
@@ -37,20 +39,19 @@
             <tr ng-repeat= "group in groups">
               <td>{{group.name}}</td>
               <td>{{group.city}}, {{group.state}}</td>
-              <td>20</td>
+              <td>{{membercount}}</td>
               <td><a href="#/group/{{group._id}}">Visit {{group.name}} Page</a></td>
             </tr>
           </tbody>
         </table>
       </div>
-        <div class="col s12 l6 section">
-          <h3>Upcoming Events</h3>
-            <div ng-repeat="meetup in meetups">
-              <p>Group:<a href="#/group/{{meetup._group._id}}"> {{meetup._group.name}}</a></p>
-              <p>Description: {{meetup.name}}</p>
-              <p>Date: {{meetup.date | date: MM/dd/yyy}}</p>
+        <div id="events" class="col s12 l4">
+            <ul ng-repeat="meetup in meetups">
+              <li>Group:<a href="#/group/{{meetup._group._id}}"> {{meetup._group.name}}</a></li>
+              <li>Description: {{meetup.name}}</li>
+              <li>Date: {{meetup.date | date: MM/dd/yyy}}</li>
               <hr>
-            </div>
+            </ul>
         </div>
       </div>
       <div class='row'>

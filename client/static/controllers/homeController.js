@@ -19,7 +19,11 @@ app.controller('homeController',[ '$scope', '$http','userFactory','$location', '
 	function getGroups(){
 		userFactory.getGroups(function(groups){
 			$scope.groups = groups;
-		} )
+			$scope.membercount = 0;
+			for(var i=0; i<group._members.length; i++){
+				$scope.membercount ++;
+			}
+		})
 	};
 
 	getGroups();
@@ -27,7 +31,7 @@ app.controller('homeController',[ '$scope', '$http','userFactory','$location', '
 	function getAllMeetups() {
     userFactory.getAllMeetups(function(meetups) {
       $scope.meetups=meetups;
-      })
+		})
   };
 	getAllMeetups();
 
@@ -37,5 +41,20 @@ app.controller('homeController',[ '$scope', '$http','userFactory','$location', '
 		})
 	};
 	getLoggedUser();
+
+
+
+	// function getGroup(id, instaFunc, getLoggedUserFunc){
+  //   userFactory.getGroup(id, function(group){
+  //     $scope.group=group;
+  //     $scope.membercount = 0;
+  //     for(var i =0; i<group._members.length; i++){
+  //       $scope.membercount ++;
+  //     }
+  //     instaFunc(group.instagram_token);
+  //     getLoggedUserFunc(group);
+  //   });
+  // };
+  // getGroup($routeParams.id, insta, getLoggedUser);
 
 }]);

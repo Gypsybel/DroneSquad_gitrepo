@@ -15,8 +15,10 @@ app.controller('homeController',[ '$scope', '$http','userFactory','$location', '
 		userFactory.getGroups(function(groups){
 			$scope.groups = groups;
 			$scope.membercount = 0;
-			for(var i=0; i<group._members.length; i++){
-				$scope.membercount ++;
+			for(var x=0; x<$scope.groups; x++){
+				for(var i=0; i<$scope.groups[x]._members.length; i++){
+					$scope.groups[x].membercount +=1;
+				}
 			}
 		})
 	};

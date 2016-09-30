@@ -2,9 +2,9 @@
   <div id="main">
     <div class="main">
       <div id="content" class="row">
-        <div id="sidebar" class="col s3">
+        <div id="sidebar" class="col s3 center-align">
           <img src="{{group.image_url}}" class="responsive-img" alt="club logo" />
-          <h2>{{group.name}}</h2>
+          <h4>{{group.name}}</h4>
           <p>Location: {{group.city}}, {{group.state}}</p>
           <p>On Drone Squad Since {{group.createdAt | date: MM/dd/yyy}}</p>
           <p>Members: {{membercount}}</p>
@@ -16,7 +16,7 @@
 
         <div class="col s7">
           <h2>About Us</h2>
-          <p>{{group.description}}</p>
+          <p class="flow-text">{{group.description}}</p>
           <hr>
           <h4>Upcoming Events</h4>
           <div ng-repeat="meetup in meetups">

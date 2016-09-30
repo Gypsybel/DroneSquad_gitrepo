@@ -8,16 +8,16 @@
             <a ng-if="user == false" href='#/register' class="waves-effect waves-light btn bgorange">Log In / Register</a>
             <a ng-if="user" href='/logout' class="waves-effect waves-light btn bgorange">Log Out</a>
           </div>
-          <ng-map zoom-to-include-markers="true" scrollwheel="false">
-            <marker ng-repeat="location in locations" position="{{location.coordinates}}",
-            title="{{group.name}}",
-            icon="../images/mapicon.png",
-            scale: 1.,
-            dragglele="true">
-            </marker>
-          </ng-map>
       </div>
     </div>
+    <ng-map zoom-to-include-markers="true" scrollwheel="false">
+      <marker ng-repeat="location in locations" position="{{location.coordinates}}",
+      title="{{group.name}}",
+      icon="../images/mapicon.png",
+      scale: 1.,
+      dragglele="true">
+    </marker>
+  </ng-map>
     <div class="row">
       <div class="col s12 l8">
         <h3 class="center-align">Choose Your Group</h3>

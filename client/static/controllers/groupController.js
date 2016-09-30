@@ -1,6 +1,6 @@
 app.controller('groupController',[ '$scope', '$http','userFactory','$location', '$routeParams', 'NgMap', function($scope, $http, userFactory, $location, $routeParams, NgMap){
   NgMap.getMap().then(function(map){
-  map.getCenter();
+    map.getCenter();
   })
   $scope.locations = [{coordinate_x: "35.3", coordinate_y:"140.2"},
   {coordinate_x: "35.5", coordinate_y:"140.4"},{coordinate_x: "35.7", coordinate_y:"140.7"}]

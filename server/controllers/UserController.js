@@ -8,7 +8,6 @@ var Url = require('url');
 module.exports = {
 
   getLoggedUser: function(req, res){
-    console.log(req.session.user);
     res.json(req.session.user);
   },
 

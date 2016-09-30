@@ -21,14 +21,7 @@ width: 80%
 .bgorange:hover{
   background-color: #f5925f;
 }
-#content {
-  height: 700px;
-  overflow: scroll;
-}
 
-#instagram {
-  height: 700px;
-}
 
 #map  {
   height: 500px;

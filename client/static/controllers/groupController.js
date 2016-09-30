@@ -1,6 +1,6 @@
 app.controller('groupController',[ '$scope', '$http','userFactory','$location', '$routeParams', 'NgMap', function($scope, $http, userFactory, $location, $routeParams, NgMap){
   NgMap.getMap().then(function(map){
-    console.log(map.getCenter());
+  map.getCenter();
   })
   $scope.locations = [{coordinate_x: "35.3", coordinate_y:"140.2"},
   {coordinate_x: "35.5", coordinate_y:"140.4"},{coordinate_x: "35.7", coordinate_y:"140.7"}]
@@ -11,7 +11,6 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
   function getGroup(id, instaFunc, getLoggedUserFunc){
     userFactory.getGroup(id, function(group){
       $scope.group=group;
-      console.log(group);
       $scope.membercount = 0;
       for(var i =0; i<group._members.length; i++){
         $scope.membercount ++;
@@ -61,10 +60,7 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
   };
 
   $scope.joinGroup = function(userId) {
-    console.log(userId);
     userFactory.joinGroup($routeParams.id, userId);
     getGroup($routeParams.id, insta, getLoggedUser);
   };
-
-
 }])

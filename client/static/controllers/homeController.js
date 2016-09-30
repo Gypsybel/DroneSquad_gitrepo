@@ -1,14 +1,9 @@
 app.controller('homeController',[ '$scope', '$http','userFactory','$location', 'NgMap', function($scope, $http, userFactory, $location, NgMap){
 	NgMap.getMap().then(function(map){
-	map.getCenter();
+		map.getCenter();
 	})
-	$scope.locations = [
-		{coordinates: "34.0697535999999985, -118.362128600000005"},
-		{coordinates: "34.157924, -118.166216"},
-		{coordinates: "34.270544, -118.378726"},
-		{coordinates: "34.1790877999999978, -118.319483000000005"},
-		{coordinates: "34.1144110400000002, -118.157018629999996"},
-	]
+	$scope.locations = [{coordinates: "34.0697535999999985, -118.362128600000005"}, {coordinates: "34.157924, -118.166216"}, {coordinates: "34.270544, -118.378726"}, {coordinates: "34.1790877999999978, -118.319483000000005"}, {coordinates: "34.1144110400000002, -118.157018629999996"}]
+
 
 	function getLoggedUser(group) {
     userFactory.getLoggedUser(function(user) {
@@ -41,20 +36,4 @@ app.controller('homeController',[ '$scope', '$http','userFactory','$location', '
 		})
 	};
 	getLoggedUser();
-
-
-
-	// function getGroup(id, instaFunc, getLoggedUserFunc){
-  //   userFactory.getGroup(id, function(group){
-  //     $scope.group=group;
-  //     $scope.membercount = 0;
-  //     for(var i =0; i<group._members.length; i++){
-  //       $scope.membercount ++;
-  //     }
-  //     instaFunc(group.instagram_token);
-  //     getLoggedUserFunc(group);
-  //   });
-  // };
-  // getGroup($routeParams.id, insta, getLoggedUser);
-
 }]);

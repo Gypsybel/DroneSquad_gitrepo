@@ -1,13 +1,11 @@
 <div ng-controller='registerController'>
 	<div class="row .center-align">
 		<div class="col s4 offset-s4 ">
-			<div ng-repeat="error in errors">
-				<p>
-					{{error}}
-				</p>
-			</div>
 			<div class="center-align">
 				<img src="../images/ds-logo-sm-orange.png" height="60px">
+			</div>
+			<div ng-repeat="error in errors">
+				<p class="red-text center">{{error}}</p>
 			</div>
 			<form>
 				<div class="row">

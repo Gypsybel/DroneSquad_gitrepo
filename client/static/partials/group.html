@@ -7,16 +7,11 @@
           <h2>{{group.name}}</h2>
           <p>Location: {{group.city}}, {{group.state}}</p>
           <p>On Drone Squad Since {{group.createdAt | date: MM/dd/yyy}}</p>
-          <!-- pull in members count here -->
-          <p>Members: 412</p>
-          <!-- pull in Upcoming Meetups count here -->
+          <p>Members: {{membercount}}</p>
           <p>Upcoming Meetups: {{meetupcount}}</p>
-          <!-- pull in past meetups count here -->
-          <p>Past Meetups: 6</p>
-          <!-- pull in organizers here -->
           <p>Organizers:</p>
-          <p>Ethan and Sean</p>
-            <button ng-if="membership == false" ng-click="joinGroup(user._id)">Join Group</button>
+          <p ng-repeat="organizer in group._organizers">{{organizer.name}}</p>
+            <button ng-if="membership == false && user" ng-click="joinGroup(user._id)" class="waves-effect waves-light btn-large bgorange">Join Group</button>
         </div>
         <div id="content" class="col s12 m4 l6">
           <h2>About Us</h2>

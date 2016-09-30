@@ -74,27 +74,29 @@ module.exports = {
   createGroup: function (req, res) {
     var group = new Group(req.body);
     group._organizers.push(req.session.user._id);
-    group.save(function(err){
+    group._members.push(req.session.user._id);
+    group.save( function(err){
       if (err){
         res.status(500).send("Group did not save");
       }
       else{
         console.log(group);
-        res.sendStatus(200);
+        res.json(group);
       }
     });
   },
+
   getGroup: function (req, res) {
     console.log(req._parsedOriginalUrl.href);
-    Group.findOne({_id:req.params.id}, function(err, group){
+    Group.findOne({_id:req.params.id}).populate("_organizers").exec(function (err, group){
       if (err){
         res.status(500).send("Had trouble finding group");
       }
       else{
-        req.session.group = group;
-        res.json(group);
-      }
-    });
+          req.session.group = group;
+          res.json(group);
+          }
+      });
   },
 
   addMeetup: function (req, res) {
@@ -189,13 +191,14 @@ module.exports = {
   },
 
   joinGroup: function (req, res) {
+    console.log("Made it to User Controller Join Group");
     console.log('**************'+req.body);
-    Group.findOne({_id:req.body}, function (err, group){
+    Group.findOne({_id:req.body.data}, function (err, group){
       if(err){
         res.status(500).send("Had trouble finding group")
       } else{
-        Group._members.push(req.session.user._id);
-        Group.save(function(err) {
+        group._members.push(req.params.userid);
+        group.save(function(err) {
           if(err){
             res.status(500).send("did not join group")
           } else{

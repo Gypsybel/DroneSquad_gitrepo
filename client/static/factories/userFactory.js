@@ -32,8 +32,7 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
         method: 'POST',
         data: group
       }).then(function(res){
-
-        $location.url('/home')
+        $location.url('/group/'+res.data._id)
       })
     };
 
@@ -101,10 +100,11 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
 
     factory.joinGroup = function (groupId, userId) {
       console.log(groupId+'***********'+userId);
+      var data = {data: groupId}
       $http({
         url:'/joingroup/'+userId,
         method: "POST",
-        data: groupId
+        data: data,
       }).then(function(res){
         $location.url('/group/'+groupId);
       })

@@ -5,6 +5,7 @@ app.controller('addgroupController',[ '$scope', '$http','userFactory','$location
 		});
 	};
 	validateLoggedIn();
+
 	$scope.createGroup = function(newgroup) {
 		userFactory.createGroup (newgroup)
 	};

@@ -3,10 +3,15 @@ width: 80%
 }
 
 #instagramSlider{
-  height: 700px;
+  height: 600px;
   overflow: scroll;
+
 }
 
+.padded {
+padding: 12px;
+
+}
 .login{
   background-color: rgb(22,53,64);
 }

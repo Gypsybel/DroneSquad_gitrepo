@@ -31,9 +31,9 @@
         <div class="col s2 center-align">
           <div class="center-align " id="instagram">
             <h5>@{{insta.data[0].user.username}}</h5>
-            <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/instagram/&response_type=code">link your instagram here</a>
-            <div id="instagramSlider">
-              <div  ng-repeat="image in insta.data" class="center-align">
+            <a ng-if="authorization == true" class="btn" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/instagram/&response_type=code">link your instagram here</a>
+            <div id="instagramSlider" >
+              <div  ng-repeat="image in insta.data" class="center-align z-depth-4">
                 <a class="center-align" href="{{image.link}}"><img class="responsive-img center-align" src="{{image.images.standard_resolution.url}}"</> </a>
               </div>
             </div>

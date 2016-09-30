@@ -1,5 +1,6 @@
 .container {
-width: 80%
+  width: 80%;
+  min-height: 900px;
 }
 
 #instagramSlider{

@@ -7,9 +7,13 @@ width: 80%
   overflow: scroll;
 
 }
+#smallbuttontext {
+  font-size:9px;
+  margin-bottom: 10px;
+}
 
 .padded {
-padding: 12px;
+margin: 12px;
 
 }
 .login{
@@ -67,7 +71,7 @@ font-size: 20px;
   background-color: #f5925f;
 }
 
-#grouptable {
+.grouptable {
   height: 400px;
   overflow: scroll;
 }

@@ -6,6 +6,9 @@
           <h2 class="center-align">Flying Locations</h2>
           <div class="col s12 right-align">
             <a ng-if="user == false" href='#/register' class="waves-effect waves-light btn bgorange">Log In / Register</a>
+
+            <a ng-if="user" href='/logout' class="waves-effect waves-light btn bgorange">Log Out</a>
+
           </div>
         <ng-map zoom-to-include-markers="true" scrollwheel="false">
           <marker ng-repeat="location in locations" position="{{location.coordinates}}",

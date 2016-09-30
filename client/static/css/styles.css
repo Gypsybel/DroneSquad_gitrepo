@@ -11,6 +11,10 @@ width: 80%
   background-color: rgb(22,53,64);
 }
 
+a {
+  color: #266880;
+}
+
 #choose_group{
   display: inline-block;
 }
@@ -20,6 +24,37 @@ width: 80%
   height: 700px;
 }
 
+.picker__date-display {
+    background-color: #266880;
+}
+
+#footer{
+background-color: #266880;
+padding-bottom: 10px;
+}
+#footertext{
+color: white;
+font-size: 20px;
+}
+
+
+.input-field .prefix.active {
+  color: #266880
+}
+
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+      background-color: #266880;
+}
+
+.picker__close, .picker__today {
+    color: #266880;
+}
+.picker__weekday-display {
+    background-color: #266880;
+}
+#flyinglocations {
+  display: inline-block;
+}
 .bgorange{
   background-color: #fa6c23;
 }
@@ -27,6 +62,10 @@ width: 80%
   background-color: #f5925f;
 }
 
+#grouptable {
+  height: 400px;
+  overflow: scroll;
+}
 
 #map  {
   height: 500px;

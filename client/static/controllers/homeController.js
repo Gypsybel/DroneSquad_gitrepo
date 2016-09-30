@@ -10,6 +10,11 @@ app.controller('homeController',[ '$scope', '$http','userFactory','$location', '
 		{coordinates: "34.1144110400000002, -118.157018629999996"},
 	]
 
+	function getLoggedUser(group) {
+    userFactory.getLoggedUser(function(user) {
+      $scope.user = user;
+    });
+  };
 
 	function getGroups(){
 		userFactory.getGroups(function(groups){

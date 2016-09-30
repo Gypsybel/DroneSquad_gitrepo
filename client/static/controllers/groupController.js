@@ -45,7 +45,7 @@ app.controller('groupController',[ '$scope', '$http','userFactory','$location', 
     userFactory.getLoggedUser(function(user) {
       $scope.user = user;
       for(var i=0; i<group._organizers.length; i++){
-        if(user._id==group._organizers[i]){
+        if(user._id==group._organizers[i]._id){
           $scope.authorization = true;
         }
       }

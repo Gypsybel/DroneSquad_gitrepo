@@ -34,6 +34,9 @@ app.config(['$httpProvider', '$routeProvider', function($httpProvider, $routePro
         .when('/addmeetup/:id', {
             templateUrl:'partials/addmeetup.html'
         })
+        .when('/admin', {
+            templateUrl:'partials/admin.html'
+        })
         .otherwise({
             redirectTo:'/'
         })

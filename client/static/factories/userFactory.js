@@ -110,5 +110,23 @@ app.factory("userFactory", ["$http", '$q', '$location', function($http, $q, $loc
       })
     };
 
+    factory.getUsers = function (callback) {
+      $http({
+        url:'/admingetUsers',
+        method: "GET",
+      }).then(function(users){
+        callback(users.data);
+      })
+    };
+
+    factory.deleteUser = function(id, callback) {
+      $http({
+        url:'/adminDeleteUser/'+id,
+        method: "DELETE",
+      }).then(function(res){
+        callback();
+      })
+    };
+
     return factory;
 }])

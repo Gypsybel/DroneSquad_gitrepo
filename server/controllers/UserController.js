@@ -211,5 +211,93 @@ module.exports = {
           })
         }
       });
-    }
+    },
+
+    getUsers: function (req, res) {
+      User.find({}, function(err, users){
+        if (err) {
+          res.status(500).send('Had trouble getting all users')
+        }
+        else {
+          res.json(users);
+        }
+      })
+    },
+
+    deleteUser: function (req, res) {
+      var id = req.params.id;
+      User.remove({_id: id}, function(err){
+        if (err) {
+          res.status(500).send('Had trouble deleting user')
+        }
+        else {
+          Group.find({}, function(err, groups){
+            if (err) {
+              res.status(500).send('Had trouble finding all groups while deleting user');
+            }
+            else {
+              for(var x = 0; x<groups.length; x++){
+                var tempArr = [];
+                var tempOrgs = [];
+                for(var i = 0; i<groups[x]._members.length; i++){
+                  if(groups[x]._members[i]!=id){
+                    tempArr.push(groups[x]._members[i])
+                  }
+                }
+                for(var i = 0; i<groups[x]._organizers.length; i++){
+                  if(groups[x]._organizers[i]!=id){
+                    tempOrgs.push(groups[x]._organizers[i])
+                  }
+                }
+                groups[x]._organizers = tempOrgs;
+                groups[x]._members = tempArr;
+                groups[x].save(function(err){
+                  if (err) {
+                    res.status(500).send('Had trouble saving group in delete user');
+                  }
+                  else{
+                    console.log('saved group');
+                  }
+                });
+                if (groups[x]._organizers.length==0) {
+                  Group.remove({_id: groups[x]._id}, function(err){
+                    if (err) {
+                      res.status(500).send('Had trouble deleting group in delete user');
+                    }
+                    else{
+                      console.log('deleted group');
+                    }
+                  })
+                }
+              }
+              Meetup.find({}, function(err, meetups){
+                if (err) {
+                  res.status(500).send('Had trouble finding all meetups in delete user');
+                }
+                if (!meetups.length) {
+                  console.log('no meetups');
+                }
+                else {
+                  for (var y = 0; y<meetups.length; y++) {
+                    console.log('checked meetup');
+                    if (meetups[y]._organizers[0]==id) {
+                      Meetup.remove({_id: meetups[y]._id}, function(err){
+                        if (err) {
+                          res.status(500).send('Had trouble deleting meetup in delete user');
+                        }
+                        else {
+                          console.log('removed meetup');
+                          res.status(200).send('successfully removed meetup')
+                        }
+                      })
+                    }
+                  }
+                }
+              })
+            }
+          });
+        }
+      })
+    },
+
 }

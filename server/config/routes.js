@@ -17,9 +17,21 @@ module.exports = function(app){
   app.post('/addgroup', userRoutes.createGroup);
   app.get('/instagramauth', userRoutes.instagramauth);
   app.post('/joingroup/:userid', userRoutes.joinGroup);
+
+  // Authenticate Admin For Following Routes
+  app.use(adminAuth);
+  app.get('/admingetUsers', userRoutes.getUsers);
+  app.delete('/adminDeleteUser/:id', userRoutes.deleteUser);
 }
 function userAuth(req,res,next){
   if (req.session.user){
+    next();
+  }else{
+    res.sendStatus(401);
+  }
+}
+function adminAuth(req,res,next){
+  if (req.session.user.email=='admin@dronesquad.com'){
     next();
   }else{
     res.sendStatus(401);

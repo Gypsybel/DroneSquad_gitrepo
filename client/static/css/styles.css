@@ -77,6 +77,11 @@ font-size: 20px;
   overflow: scroll;
 }
 
+.groupevents {
+  height: 600px;
+  overflow: scroll;
+}
+
 #map  {
   height: 500px;
 }

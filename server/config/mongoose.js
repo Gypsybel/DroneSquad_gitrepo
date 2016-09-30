@@ -3,7 +3,7 @@ var path = require('path');
 var fs = require('fs');
 
 
-mongoose.connect('mongodb://localhost/DroneSquad'); // rename template
+mongoose.connect('mongodb://localhost/Drone_Squad'); // rename template
 
 var models_path = path.join(__dirname, '../models/');
 

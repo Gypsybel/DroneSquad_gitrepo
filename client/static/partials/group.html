@@ -11,30 +11,30 @@
           <p>Upcoming Meetups: {{meetupcount}}</p>
           <p>Organizers:</p>
           <p ng-repeat="organizer in group._organizers">{{organizer.name}}</p>
-            <button ng-if="membership == false && user" ng-click="joinGroup(user._id)" class="waves-effect waves-light btn bgorange">Join Group</button>
+            <button ng-if="membership == false" ng-click="joinGroup(user._id)" class="waves-effect waves-light btn bgorange">Join Group</button>
         </div>
 
-        <div class="col s7">
+        <div class="col s7 groupevents">
           <h2>About Us</h2>
           <p class="flow-text">{{group.description}}</p>
           <hr>
           <h4>Upcoming Events</h4>
+          <a ng-if="authorization == true" href="#/addmeetup/{{group._id}}" class="btn bgorange">Add New Event</a>
           <div ng-repeat="meetup in meetups">
             <h5>{{meetup.name}}</h5>
             <p>Date: {{meetup.date | date: MM/dd/yyy}}</p>
             <p>Description: {{meetup.description}}</p>
             <p>Where: {{meetup.location}}</p>
           </div>
-          <a ng-if="authorization == true" href="#/addmeetup/{{group._id}}"><button>Add New Event</button></a>
         </div>
 
         <div class="col s2 center-align">
           <div class="center-align " id="instagram">
             <h5>@{{insta.data[0].user.username}}</h5>
-            <a ng-if="authorization == true" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/instagram/&response_type=code">link your instagram here</a>
-            <div id="instagramSlider">
-              <div  ng-repeat="image in insta.data" class="center-align">
-                <a class="center-align" href="{{image.link}}"><img class="responsive-img center-align" src="{{image.images.standard_resolution.url}}"</> </a>
+            <a id="smallbuttontext" ng-if="authorization == true" class="btn bgorange" href="https://api.instagram.com/oauth/authorize/?client_id=ed0b913c94f94440baf6218a95fa4ebf&redirect_uri=http://www.partyhard24-7.com/instagram/&response_type=code">link your instagram</a>
+            <div id="instagramSlider" >
+              <div  ng-repeat="image in insta.data" class="center-align padded">
+                <a class="center-align" href="{{image.link}}"><img class="responsive-img center-align z-depth-2" src="{{image.images.standard_resolution.url}}"</> </a>
               </div>
             </div>
           </div>

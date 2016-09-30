@@ -3,10 +3,19 @@ width: 80%
 }
 
 #instagramSlider{
-  height: 700px;
+  height: 600px;
   overflow: scroll;
+
+}
+#smallbuttontext {
+  font-size:9px;
+  margin-bottom: 10px;
 }
 
+.padded {
+margin: 12px;
+
+}
 .login{
   background-color: rgb(22,53,64);
 }
@@ -62,8 +71,13 @@ font-size: 20px;
   background-color: #f5925f;
 }
 
-#grouptable {
+.grouptable {
   height: 400px;
+  overflow: scroll;
+}
+
+.groupevents {
+  height: 600px;
   overflow: scroll;
 }
 
@@ -82,6 +96,12 @@ thead{
 .btn :hover{
   background-color: #FA6C23;
 };
+
+#events{
+  height: 200px;
+  background-color: green;
+  overflow:scroll;
+}
 
 
 

@@ -64,7 +64,7 @@ module.exports = {
   },
 
   getGroups: function(req, res){
-    Group.find({}).exec(function(err, groups){
+    Group.find({}).populate('_members').exec(function(err, groups){
       if(err){
         res.status(500).send('There was a problem retrieving all groups.')
       }

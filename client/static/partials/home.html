@@ -6,17 +6,16 @@
           <h2 class="center-align">Flying Locations</h2>
           <div class="col s12 right-align">
             <a ng-if="user == false" href='#/register' class="waves-effect waves-light btn bgorange">Log In / Register</a>
-
             <a ng-if="user" href='/logout' class="waves-effect waves-light btn bgorange">Log Out</a>
-
           </div>
-        <ng-map zoom-to-include-markers="true" scrollwheel="false">
-          <marker ng-repeat="location in locations" position="{{location.coordinates}}",
-          title="{{group.name}}",
-          icon="../images/mapicon.png",
-          scale: 1.,
-          dragglele="true"> </marker>
-        </ng-map>
+          <ng-map zoom-to-include-markers="true" scrollwheel="false">
+            <marker ng-repeat="location in locations" position="{{location.coordinates}}",
+            title="{{group.name}}",
+            icon="../images/mapicon.png",
+            scale: 1.,
+            dragglele="true">
+            </marker>
+          </ng-map>
       </div>
     </div>
     <div class="row">
@@ -28,7 +27,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col s12 l6 center-align grouptable">
+      <div class="col s12 l7 center-align grouptable">
         <table class="highlight z-depth-1 center-align grouptable">
           <thead>
             <tr>
@@ -48,18 +47,18 @@
           </tbody>
         </table>
       </div>
-        <div id="events" class="col s12 l4">
-            <ul ng-repeat="meetup in meetups">
-              <li>Group:<a href="#/group/{{meetup._group._id}}"> {{meetup._group.name}}</a></li>
-              <li>Description: {{meetup.name}}</li>
-              <li>Date: {{meetup.date | date: MM/dd/yyy}}</li>
-              <hr>
-            </ul>
-        </div>
+      <div id="events" class="col s12 l4 center-align offset-l1 grouptable">
+        <ul ng-repeat="meetup in meetups">
+          <li>Group:<a href="#/group/{{meetup._group._id}}"> {{meetup._group.name}}</a></li>
+          <li>Description: {{meetup.name}}</li>
+          <li>Date: {{meetup.date | date: MM/dd/yyy}}</li>
+          <hr>
+        </ul>
       </div>
-      <div class='row'>
-        <div class='col s2 offset-s1'></div>
-        <a href="#/addgroup" class="waves-effect waves-light btn bgorange">Add A Group</a>
+    </div>
+    <div class='row'>
+      <div class='col s2 offset-s1'>
+      <a href="#/addgroup" class="waves-effect waves-light btn bgorange">Add A Group</a>
       </div>
     </div>
   </div>

@@ -20,7 +20,7 @@ module.exports = {
 			}
       else{
         console.log(user);
-  			req.session.user = req.body;
+  			req.session.user = user;
         res.sendStatus(200);
 			}
 		});
